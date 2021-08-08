@@ -3,17 +3,15 @@ package com.JPA.onlineExam.repoTest;
 import javax.persistence.EntityManagerFactory;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
-@Configuration
-@EnableJpaRepositories(basePackages = { "com.JPA.onlineExam" })
+//@Configuration
+//@EnableJpaRepositories(basePackages = { "com.JPA.onlineExam.repository" })
 public class ApplicationConfig {
 
 	@Bean
-	public LocalEntityManagerFactoryBean myentityManagerFactory() {
+	public LocalEntityManagerFactoryBean entityManagerFactory() {
 		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
 		factoryBean.setPersistenceUnitName("JPA_Online_Exam");
 		return factoryBean;
@@ -21,7 +19,7 @@ public class ApplicationConfig {
 	}
 
 	@Bean
-	public JpaTransactionManager mytransactionManager(EntityManagerFactory emf) {
+	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
 
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 
