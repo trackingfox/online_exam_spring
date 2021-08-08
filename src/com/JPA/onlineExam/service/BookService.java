@@ -1,6 +1,8 @@
 package com.JPA.onlineExam.service;
 
-import org.junit.Test;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,24 +15,32 @@ public class BookService {
 	@Autowired
 	private BookRepository bookrepo;
 
-	@Test
+	// @Test
 	public void BookRun() {
 
 		Book b = new Book("The Maificent");
 		Book c = new Book("The Sun");
 		Book d = new Book("The rainbow");
 
-		bookrepo.save(d);
+		List<Book> bl = new ArrayList<Book>();
+		bl.add(b);
+		bl.add(c);
+		bl.add(d);
 
-//		bookImpl.saveBook(b);
-//		bookImpl.saveBook(c);
-//		bookImpl.saveBook(d);
-//
+		BookRun(bl);
 //		System.out.println(bookImpl.getBookById(3).toString());
 
 		// System.out.println(bookImpl.getBookByTitle("The Sun").toString());
 
 		// bookImpl.deleteBook(b);
+
+	}
+
+	public void BookRun(List<Book> bk) {
+
+		for (Book b : bk) {
+			bookrepo.save(b);
+		}
 
 	}
 

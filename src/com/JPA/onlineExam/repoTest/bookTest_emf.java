@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.JPA.onlineExam.model.Book;
 import com.JPA.onlineExam.repository.BookRepositoryImpl;
 
-public class BookRun1 {
+public class bookTest_emf {
 
 	@Test
 	public void BookRun() {

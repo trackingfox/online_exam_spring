@@ -5,7 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.JPA.onlineExam.service.BookService;
 
-public class bookTest {
+public class bookTest_appconfig {
 
 	@Test
 	public void callbook() {
