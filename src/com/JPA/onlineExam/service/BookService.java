@@ -28,7 +28,7 @@ public class BookService {
 		bl.add(d);
 
 		BookRun(bl);
-//		System.out.println(bookImpl.getBookById(3).toString());
+		// System.out.println(bookImpl.getBookById(3).toString());
 
 		// System.out.println(bookImpl.getBookByTitle("The Sun").toString());
 
@@ -41,6 +41,11 @@ public class BookService {
 		for (Book b : bk) {
 			bookrepo.save(b);
 		}
+
+		bookrepo.delete(bk.get(0));
+
+		System.out.println(bookrepo.findAll().toString());
+		System.out.println(bookrepo.findById((long) 2));
 
 	}
 

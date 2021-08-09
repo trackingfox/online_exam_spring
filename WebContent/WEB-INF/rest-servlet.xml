@@ -29,7 +29,7 @@
 	</mvc:view-resolvers>
 
 	<context:property-placeholder
-		location="application.properties" />
+		location="/WEB-INF/application.properties" />
 
 
 	<bean

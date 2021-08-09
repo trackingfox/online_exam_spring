@@ -18,15 +18,24 @@
 	<context:annotation-config />
 	<context:component-scan
 		base-package="com.JPA.onlineExam" />
+	<mvc:annotation-driven />
+	<mvc:view-resolvers>
+		<mvc:content-negotiation>
+			<mvc:default-views>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+			</mvc:default-views>
+		</mvc:content-negotiation>
+	</mvc:view-resolvers>
 
 	<context:property-placeholder
 		location="application.properties" />
 
+
 	<bean
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		id="dataSource">
-		<property name="driverClass"
-			value="${jdbc.driverClassName}" />
+		<property name="driverClass" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
@@ -36,12 +45,13 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="JPA_Online_Exam" />
 		<property name="dataSource" ref="dataSource" />
-		
+
 	</bean>
 
 	<jpa:repositories
-		base-package="com.JPA.onlineExam.repository" entity-manager-factory-ref="emf">
-		
+		base-package="com.JPA.onlineExam.repository"
+		entity-manager-factory-ref="emf">
+
 	</jpa:repositories>
 
 	<tx:annotation-driven
