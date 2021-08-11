@@ -42,4 +42,10 @@ public class BookController {
 
 	}
 
+	@GetMapping(value = "/ping")
+	public String ping() {
+
+		return "hello world";
+	}
+
 }
