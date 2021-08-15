@@ -1,10 +1,15 @@
 package com.JPA.onlineExam.controller;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.JPA.onlineExam.model.Topic;
 import com.JPA.onlineExam.repository.TopicRepository;
 import com.JPA.onlineExam.service.TopicService;
 
@@ -32,6 +37,27 @@ public class TopicController {
 
 	public void setPopulateTopics(TopicService populateTopics) {
 		this.populateTopics = populateTopics;
+	}
+
+	@GetMapping(value = "/alltopics")
+	public List<Topic> getAllTopics() {
+
+		return repository.findAll();
+	}
+
+	@GetMapping(value = "/ping")
+	public String ping() {
+
+		return "hello world hello cbb";
+	}
+
+	@GetMapping(value = "/populateTopics")
+	public String populateCustomer() throws IllegalStateException, FileNotFoundException {
+
+		// populateService.importCustomerFromCsv();
+		populateTopics.populateTopics();
+
+		return "populate done ok hello";
 	}
 
 }
