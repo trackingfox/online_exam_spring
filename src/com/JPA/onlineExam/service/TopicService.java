@@ -64,4 +64,11 @@ public class TopicService {
 		topicList.forEach(x -> repository.save(x));
 	}
 
+	public List<Topic> fetchTopics() {
+
+		List<Topic> topics = repository.FetchTopics();
+		return topics;
+
+	}
+
 }

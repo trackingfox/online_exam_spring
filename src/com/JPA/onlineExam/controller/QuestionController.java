@@ -52,13 +52,22 @@ public class QuestionController {
 	}
 
 	@GetMapping(value = "/populate")
-	public String populateCustomer() throws IllegalStateException, FileNotFoundException {
+	public String populateQues() throws IllegalStateException, FileNotFoundException {
 
 		// populateService.importCustomerFromCsv();
 		populateQuestion.populateQuestion();
-		;
 
 		return "populate done ok hello";
+	}
+
+	@GetMapping(value = "/fetchQuestion")
+	public String fetchQues() {
+
+		// fetch questions from repository
+		List<Question> ques = repository.fetchQuestions();
+		// System.out.println(ques.toString());
+
+		return ques.toString();
 	}
 
 }

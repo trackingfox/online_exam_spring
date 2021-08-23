@@ -37,7 +37,7 @@ public class TestPaperController {
 	}
 
 	@GetMapping(value = "/populateTestPaper")
-	public String populateCustomer() throws IllegalStateException, FileNotFoundException {
+	public String populateTestPaper() throws IllegalStateException, FileNotFoundException {
 
 		// populateService.importCustomerFromCsv();
 		populateTestPaper.populateTestPaper();

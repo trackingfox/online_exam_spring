@@ -52,12 +52,22 @@ public class TopicController {
 	}
 
 	@GetMapping(value = "/populateTopics")
-	public String populateCustomer() throws IllegalStateException, FileNotFoundException {
+	public String populateTop() throws IllegalStateException, FileNotFoundException {
 
 		// populateService.importCustomerFromCsv();
 		populateTopics.populateTopics();
 
 		return "populate done ok hello";
+	}
+
+	@GetMapping(value = "/fetchTopic")
+	public String fetchTop() {
+
+		// fetch questions from repository
+		List<Topic> topics = repository.FetchTopics();
+		// System.out.println(ques.toString());
+
+		return topics.toString();
 	}
 
 }

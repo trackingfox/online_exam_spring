@@ -49,6 +49,11 @@ public class PopulateQuestionService {
 		return QuestionList;
 	}
 
+	public List<Question> fetchQues() {
+		List<Question> results = repository.fetchQuestions();
+		return results;
+	}
+
 	// only for testing using entityManager below
 	@Test
 	public void importTodb() throws IllegalStateException, FileNotFoundException {
