@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.JPA.onlineExam.model.Question;
 import com.JPA.onlineExam.repository.QuestionRepository;
-import com.JPA.onlineExam.service.PopulateQuestionService;
+import com.JPA.onlineExam.service.QuestionService;
 
 @RestController
 @RequestMapping(value = "/questions", produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -21,13 +21,13 @@ public class QuestionController {
 	private QuestionRepository repository;
 
 	@Autowired
-	private PopulateQuestionService populateQuestion;
+	private QuestionService populateQuestion;
 
-	public PopulateQuestionService getPopulateQuestion() {
+	public QuestionService getPopulateQuestion() {
 		return populateQuestion;
 	}
 
-	public void setPopulateQuestion(PopulateQuestionService populateQuestion) {
+	public void setPopulateQuestion(QuestionService populateQuestion) {
 		this.populateQuestion = populateQuestion;
 	}
 

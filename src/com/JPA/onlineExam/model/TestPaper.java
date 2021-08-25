@@ -2,7 +2,6 @@ package com.JPA.onlineExam.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +28,7 @@ public class TestPaper {
 	@ManyToMany
 	private List<Topic> topics;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Question> questionSet;
 
 	public long getId() {

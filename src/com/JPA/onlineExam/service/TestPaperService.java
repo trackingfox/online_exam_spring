@@ -18,6 +18,7 @@ public class TestPaperService {
 
 	@Autowired
 	private TestPaperRepository repository;
+
 	@Autowired
 	private QuestionRepository repository2;
 
@@ -41,6 +42,8 @@ public class TestPaperService {
 		for (int i = 1; i <= 3; i++) {
 
 			List<Question> results = repository2.fetchQuestions();
+			System.out.println(results.size());
+			// System.out.println(results.toString());
 			TestPaper test1 = new TestPaper();
 			test1.setQuestionSet(results);
 			test1.setTestName("Full Stack JAVA");
