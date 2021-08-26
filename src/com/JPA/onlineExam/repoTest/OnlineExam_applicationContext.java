@@ -13,8 +13,6 @@ import com.JPA.onlineExam.service.QuestionService;
 import com.JPA.onlineExam.service.ScoreService;
 import com.JPA.onlineExam.service.TestPaperService;
 import com.JPA.onlineExam.service.TopicService;
-import com.JPA.onlineExam.service.TopicWiseScoreService;
-import com.JPA.onlineExam.service.UserService;
 
 public class OnlineExam_applicationContext {
 
@@ -33,11 +31,11 @@ public class OnlineExam_applicationContext {
 	@Autowired
 	AttemptedTestService Att_testpaperservice;
 
-	@Autowired
-	UserService userService;
-
-	@Autowired
-	TopicWiseScoreService topicWiseScoreService;
+//	@Autowired
+//	UserService userService;
+//
+//	@Autowired
+//	TopicWiseScoreService topicWiseScoreService;
 
 //	@Transactional
 	@Test
