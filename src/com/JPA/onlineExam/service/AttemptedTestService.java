@@ -7,19 +7,25 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.JPA.onlineExam.model.AttemptedTest;
 import com.JPA.onlineExam.model.Question;
 import com.JPA.onlineExam.model.Score;
 import com.JPA.onlineExam.model.TestPaper;
 import com.JPA.onlineExam.repository.AttemptedTestRepository;
+import com.JPA.onlineExam.repository.QuestionRepository;
 import com.JPA.onlineExam.repository.ScoreRepository;
 import com.JPA.onlineExam.repository.TestPaperRepository;
 
+@Service
 public class AttemptedTestService {
 
 	@Autowired
 	private AttemptedTestRepository repository;
+
+	@Autowired
+	private QuestionRepository repository4;
 
 	@Autowired
 	private TestPaperRepository repository2;

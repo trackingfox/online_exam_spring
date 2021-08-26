@@ -8,19 +8,38 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.JPA.onlineExam.repository.QuestionRepository;
+import com.JPA.onlineExam.service.AttemptedTestService;
 import com.JPA.onlineExam.service.QuestionService;
+import com.JPA.onlineExam.service.ScoreService;
 import com.JPA.onlineExam.service.TestPaperService;
 import com.JPA.onlineExam.service.TopicService;
+import com.JPA.onlineExam.service.TopicWiseScoreService;
+import com.JPA.onlineExam.service.UserService;
 
 public class OnlineExam_applicationContext {
 
 	@Autowired
-	TestPaperService testserve;
+	TestPaperService testpaperservice;
 
 	@Autowired
 	QuestionService questionService;
 
-	// @Transactional
+	@Autowired
+	TopicService topicservice;
+
+	@Autowired
+	ScoreService Score_service;
+
+	@Autowired
+	AttemptedTestService Att_testpaperservice;
+
+	@Autowired
+	UserService userService;
+
+	@Autowired
+	TopicWiseScoreService topicWiseScoreService;
+
+//	@Transactional
 	@Test
 	public void TestPapercall() throws IllegalStateException, FileNotFoundException {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -35,6 +54,18 @@ public class OnlineExam_applicationContext {
 
 		TestPaperService testpaperservice = context.getBean(TestPaperService.class);
 		testpaperservice.populateTestPaper();
+
+		ScoreService Score_service = context.getBean(ScoreService.class);
+		Score_service.populateScore();
+
+		AttemptedTestService Att_testpaperservice = context.getBean(AttemptedTestService.class);
+		Att_testpaperservice.populateAttemptedTestPaper();
+
+//		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
+//		topicWiseScoreService.populateTopicWiseScore();
+//
+//		UserService userService = context.getBean(UserService.class);
+//		userService.populateUser();
 
 	}
 

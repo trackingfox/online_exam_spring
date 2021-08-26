@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class AttemptedTest {
 	@OneToOne
 	private Score score;
 
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.LAZY)
 	private Map<Question, Character> questionAnswersSet;
 
 	public long getId() {
