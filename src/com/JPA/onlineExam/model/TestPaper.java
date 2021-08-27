@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,10 +26,10 @@ public class TestPaper {
 	@Column(name = "testLevel")
 	private String testLevel;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Topic> topics;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Question> questionSet;
 
 	public long getId() {
@@ -71,10 +72,10 @@ public class TestPaper {
 		this.questionSet = questionSet;
 	}
 
-	@Override
-	public String toString() {
-		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", topics=" + topics
-				+ ", questionSet=" + questionSet + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", topics=" + topics
+//				+ ", questionSet=" + questionSet + "]";
+//	}
 
 }

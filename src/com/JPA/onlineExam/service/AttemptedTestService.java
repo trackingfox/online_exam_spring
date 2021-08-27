@@ -48,7 +48,6 @@ public class AttemptedTestService {
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 		List<AttemptedTest> AttemptedTestPaperList = new ArrayList<>();
 
-		AttemptedTest test2 = new AttemptedTest();
 		List<Score> scores = repository3.FetchScores();
 
 		int finalScore = 0;
@@ -59,14 +58,17 @@ public class AttemptedTestService {
 
 			for (int i = 0; i < no_of_attempt; i++) {
 
+				AttemptedTest test2 = new AttemptedTest();
 				test2.setTest(test1);
-				finalScore = calculateFinalScore(test1);
-				hashmap = testAnswers(test1);
-				test2.setFinalScore(finalScore);
-				test2.setQuestionAnswersSet(hashmap);
+				// finalScore = calculateFinalScore(test1);
+				// hashmap = testAnswers(test1);
+				// test2.setFinalScore(finalScore);
+				// test2.setQuestionAnswersSet(hashmap);
 				test2.setScore(scores.get(k));
 				AttemptedTestPaperList.add(test2);
 				k++;
+
+				System.out.println(test2.toString());
 
 			}
 
@@ -74,13 +76,34 @@ public class AttemptedTestService {
 		return AttemptedTestPaperList;
 	}
 
-	public void populateAttemptedTestPaper() {
-		List<AttemptedTest> Att_testPaperList = createAttemptedTest();
+	public AttemptedTest createOneAttemptedTest() {
+		AttemptedTest test2 = new AttemptedTest();
+		List<TestPaper> test = repository2.fetchTestPapers();
+		List<Score> scores = repository3.FetchScores();
+		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 
-		Att_testPaperList.forEach(x -> repository.save(x));
+		int finalScore = 0;
+		test2.setTest(test.get(0));
+		finalScore = calculateFinalScore(test.get(0));
+		hashmap = testAnswers(test.get(0));
+		test2.setFinalScore(finalScore);
+		test2.setQuestionAnswersSet(hashmap);
+		test2.setScore(scores.get(0));
+
+		return test2;
 
 	}
 
+	public void populateAttemptedTestPaper() {
+		// List<AttemptedTest> Att_testPaperList = createAttemptedTest();
+		// Att_testPaperList.forEach(x -> repository.save(x));
+
+		AttemptedTest test2 = createOneAttemptedTest();
+		repository.save(test2);
+
+	}
+
+//CALCULATING FINAL SCORE FOR EACH TESTPAPER
 	public int calculateFinalScore(TestPaper testPaper) {
 
 		int finalScore = 0;
@@ -103,6 +126,7 @@ public class AttemptedTestService {
 		return finalScore;
 	}
 
+//MAPPING QUESTION OF EACH TESTPAPER WITH ACTUAL ANSWER
 	public Map<Question, Character> testAnswers(TestPaper testPaper) {
 
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();

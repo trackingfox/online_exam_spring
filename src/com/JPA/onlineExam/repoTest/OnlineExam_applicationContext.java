@@ -8,11 +8,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.JPA.onlineExam.repository.QuestionRepository;
+import com.JPA.onlineExam.repository.TopicRepository;
 import com.JPA.onlineExam.service.AttemptedTestService;
 import com.JPA.onlineExam.service.QuestionService;
 import com.JPA.onlineExam.service.ScoreService;
 import com.JPA.onlineExam.service.TestPaperService;
 import com.JPA.onlineExam.service.TopicService;
+import com.JPA.onlineExam.service.TopicWiseScoreService;
 
 public class OnlineExam_applicationContext {
 
@@ -50,17 +52,28 @@ public class OnlineExam_applicationContext {
 		TopicService topicservice = context.getBean(TopicService.class);
 		topicservice.populateTopics();
 
+		TopicRepository topicRepo = context.getBean(TopicRepository.class);
+		System.out.println(topicRepo.FetchTopics());
+
 		TestPaperService testpaperservice = context.getBean(TestPaperService.class);
 		testpaperservice.populateTestPaper();
 
-		ScoreService Score_service = context.getBean(ScoreService.class);
-		Score_service.populateScore();
+//		TestPaperRepository testPaperRepo = context.getBean(TestPaperRepository.class);
+//		System.out.println(testPaperRepo.fetchTestPapers());
+//
+//		for (TestPaper t : testPaperRepo.fetchTestPapers()) {
+//			System.out.println(t.getId() + "  " + t.getTestLevel() + " " + t.getTestName() + "  " + t.getQuestionSet()
+//					+ "  " + t.getTopics());
+//		}
 
-		AttemptedTestService Att_testpaperservice = context.getBean(AttemptedTestService.class);
-		Att_testpaperservice.populateAttemptedTestPaper();
+//		ScoreService Score_service = context.getBean(ScoreService.class);
+//		Score_service.populateScore();
 
-//		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
-//		topicWiseScoreService.populateTopicWiseScore();
+//		AttemptedTestService Att_testpaperservice = context.getBean(AttemptedTestService.class);
+//		Att_testpaperservice.populateAttemptedTestPaper();
+
+		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
+		topicWiseScoreService.populateTopicWiseScore();
 //
 //		UserService userService = context.getBean(UserService.class);
 //		userService.populateUser();

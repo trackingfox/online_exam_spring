@@ -9,7 +9,7 @@ import com.JPA.onlineExam.model.TestPaper;
 
 public interface TestPaperRepository extends JpaRepository<TestPaper, Long> {
 
-	@Query("FROM TestPaper where Id>=1 AND Id<=4 ")
+	@Query("FROM TestPaper where Id>=1 AND Id<=3 ")
 	List<TestPaper> fetchTestPapers();
 
 }
