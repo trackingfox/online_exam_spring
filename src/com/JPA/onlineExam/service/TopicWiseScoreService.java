@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.JPA.onlineExam.model.Score;
 import com.JPA.onlineExam.model.Topic;
@@ -12,6 +13,7 @@ import com.JPA.onlineExam.repository.ScoreRepository;
 import com.JPA.onlineExam.repository.TopicRepository;
 import com.JPA.onlineExam.repository.TopicWiseScoreRepository;
 
+@Service
 public class TopicWiseScoreService {
 
 	@Autowired

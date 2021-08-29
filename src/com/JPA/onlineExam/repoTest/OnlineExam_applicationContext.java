@@ -9,12 +9,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.JPA.onlineExam.repository.QuestionRepository;
 import com.JPA.onlineExam.repository.TopicRepository;
+import com.JPA.onlineExam.repository.TopicWiseScoreRepository;
 import com.JPA.onlineExam.service.AttemptedTestService;
 import com.JPA.onlineExam.service.QuestionService;
 import com.JPA.onlineExam.service.ScoreService;
 import com.JPA.onlineExam.service.TestPaperService;
 import com.JPA.onlineExam.service.TopicService;
 import com.JPA.onlineExam.service.TopicWiseScoreService;
+import com.JPA.onlineExam.service.UserService;
 
 public class OnlineExam_applicationContext {
 
@@ -66,17 +68,23 @@ public class OnlineExam_applicationContext {
 //					+ "  " + t.getTopics());
 //		}
 
-//		ScoreService Score_service = context.getBean(ScoreService.class);
-//		Score_service.populateScore();
+		ScoreService Score_service = context.getBean(ScoreService.class);
+		Score_service.populateScore();
 
 //		AttemptedTestService Att_testpaperservice = context.getBean(AttemptedTestService.class);
 //		Att_testpaperservice.populateAttemptedTestPaper();
 
 		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
 		topicWiseScoreService.populateTopicWiseScore();
-//
-//		UserService userService = context.getBean(UserService.class);
-//		userService.populateUser();
+
+		TopicWiseScoreRepository topicWiseScoreRepo = context.getBean(TopicWiseScoreRepository.class);
+		System.out.println(topicWiseScoreRepo.Fetch_TopicWiseScoreList(1, 3));
+
+		UserService userService = context.getBean(UserService.class);
+		userService.populateUser();
+
+//		UserRepository userRepo = context.getBean(UserRepository.class);
+//		System.out.println(userRepo.FetchUser());
 
 	}
 
