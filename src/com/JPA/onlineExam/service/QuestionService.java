@@ -3,6 +3,7 @@ package com.JPA.onlineExam.service;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -49,8 +50,8 @@ public class QuestionService {
 		return QuestionList;
 	}
 
-	public List<Question> fetchQues() {
-		List<Question> results = repository.fetchQuestions();
+	public Set<Question> fetchQues() {
+		Set<Question> results = repository.fetchQuestions();
 		return results;
 	}
 

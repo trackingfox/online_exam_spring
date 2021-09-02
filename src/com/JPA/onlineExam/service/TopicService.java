@@ -3,6 +3,7 @@ package com.JPA.onlineExam.service;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,9 +65,9 @@ public class TopicService {
 		topicList.forEach(x -> repository.save(x));
 	}
 
-	public List<Topic> fetchTopics() {
+	public Set<Topic> fetchTopics() {
 
-		List<Topic> topics = repository.FetchTopics();
+		Set<Topic> topics = repository.FetchTopics();
 		return topics;
 
 	}

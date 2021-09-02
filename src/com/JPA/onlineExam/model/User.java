@@ -1,9 +1,11 @@
 package com.JPA.onlineExam.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,11 +30,11 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	@ManyToMany
-	private List<TestPaper> TestPaperList;
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<TestPaper> TestPaperList;
 
-	@OneToMany
-	private List<AttemptedTest> attemptTestPaperList;
+	@OneToMany(fetch = FetchType.LAZY)
+	private Set<AttemptedTest> attemptTestPaperList;
 
 	// allows nullable
 	@Nullable
@@ -69,19 +71,19 @@ public class User {
 		this.password = password;
 	}
 
-	public List<TestPaper> getTestPaperList() {
+	public Set<TestPaper> getTestPaperList() {
 		return TestPaperList;
 	}
 
-	public void setTestPaperList(List<TestPaper> testPaperList) {
+	public void setTestPaperList(Set<TestPaper> testPaperList) {
 		TestPaperList = testPaperList;
 	}
 
-	public List<AttemptedTest> getAttemptTestPaperList() {
+	public Set<AttemptedTest> getAttemptTestPaperList() {
 		return attemptTestPaperList;
 	}
 
-	public void setAttemptTestPaperList(List<AttemptedTest> attemptTestPaperList) {
+	public void setAttemptTestPaperList(Set<AttemptedTest> attemptTestPaperList) {
 		this.attemptTestPaperList = attemptTestPaperList;
 	}
 

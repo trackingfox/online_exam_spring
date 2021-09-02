@@ -1,9 +1,10 @@
 package com.JPA.onlineExam.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,11 +28,11 @@ public class TestPaper {
 
 //(fetch = FetchType.EAGER)
 
-	@ManyToMany
-	private List<Topic> topics;
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<Topic> topics;
 
-	@ManyToMany
-	private List<Question> questionSet;
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<Question> questionSet;
 
 	public long getId() {
 		return Id;
@@ -57,26 +58,26 @@ public class TestPaper {
 		this.testLevel = testLevel;
 	}
 
-	public List<Topic> getTopics() {
+	public Set<Topic> getTopics() {
 		return topics;
 	}
 
-	public void setTopics(List<Topic> topics) {
+	public void setTopics(Set<Topic> topics) {
 		this.topics = topics;
 	}
 
-	public List<Question> getQuestionSet() {
+	public Set<Question> getQuestionSet() {
 		return questionSet;
 	}
 
-	public void setQuestionSet(List<Question> questionSet) {
+	public void setQuestionSet(Set<Question> questionSet) {
 		this.questionSet = questionSet;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", topics=" + topics
-//				+ ", questionSet=" + questionSet + "]";
-//	}
+	@Override
+	public String toString() {
+		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", topics=" + topics
+				+ ", questionSet=" + questionSet + "]";
+	}
 
 }

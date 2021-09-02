@@ -1,7 +1,7 @@
 package com.JPA.onlineExam.controller;
 
 import java.io.FileNotFoundException;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -50,7 +50,7 @@ public class TestPaperController {
 	@GetMapping(value = "/fetchTestPaper")
 	public String fetchTestPaper() throws IllegalStateException, FileNotFoundException {
 
-		List<TestPaper> testpaperlist = repository.fetchTestPapers();
+		Set<TestPaper> testpaperlist = repository.fetchTestPapers();
 		return testpaperlist.toString();
 	}
 

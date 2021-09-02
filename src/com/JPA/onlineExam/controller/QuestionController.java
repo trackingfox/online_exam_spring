@@ -2,6 +2,7 @@ package com.JPA.onlineExam.controller;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -64,7 +65,7 @@ public class QuestionController {
 	public String fetchQues() {
 
 		// fetch questions from repository
-		List<Question> ques = repository.fetchQuestions();
+		Set<Question> ques = repository.fetchQuestions();
 		// System.out.println(ques.toString());
 
 		return ques.toString();

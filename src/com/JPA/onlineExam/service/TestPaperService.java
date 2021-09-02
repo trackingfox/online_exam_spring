@@ -2,6 +2,7 @@ package com.JPA.onlineExam.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,11 +38,11 @@ public class TestPaperService {
 
 		List<TestPaper> testPaperList = new ArrayList<>();
 
-		List<Topic> topics = repository3.FetchTopics();
+		Set<Topic> topics = repository3.FetchTopics();
 
 		for (int i = 1; i <= 3; i++) {
 
-			List<Question> results = repository2.fetchQuestions();
+			Set<Question> results = repository2.fetchQuestions();
 			System.out.println(results.size());
 			// System.out.println(results.toString());
 			TestPaper test1 = new TestPaper();

@@ -44,7 +44,7 @@ public class AttemptedTestService {
 	public List<AttemptedTest> createAttemptedTest() {
 
 //	    create the attempted test object  
-		List<TestPaper> test = repository2.fetchTestPapers();
+		Set<TestPaper> test = repository2.fetchTestPapers();
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 		List<AttemptedTest> AttemptedTestPaperList = new ArrayList<>();
 
@@ -60,10 +60,10 @@ public class AttemptedTestService {
 
 				AttemptedTest test2 = new AttemptedTest();
 				test2.setTest(test1);
-				// finalScore = calculateFinalScore(test1);
-				// hashmap = testAnswers(test1);
-				// test2.setFinalScore(finalScore);
-				// test2.setQuestionAnswersSet(hashmap);
+				finalScore = calculateFinalScore(test1);
+				hashmap = testAnswers(test1);
+				test2.setFinalScore(finalScore);
+				test2.setQuestionAnswersSet(hashmap);
 				test2.setScore(scores.get(k));
 				AttemptedTestPaperList.add(test2);
 				k++;
@@ -78,14 +78,14 @@ public class AttemptedTestService {
 
 	public AttemptedTest createOneAttemptedTest() {
 		AttemptedTest test2 = new AttemptedTest();
-		List<TestPaper> test = repository2.fetchTestPapers();
+		Set<TestPaper> test = repository2.fetchTestPapers();
 		List<Score> scores = repository3.FetchScores();
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 
 		int finalScore = 0;
-		test2.setTest(test.get(0));
-		finalScore = calculateFinalScore(test.get(0));
-		hashmap = testAnswers(test.get(0));
+		test2.setTest(test.iterator().next());
+		finalScore = calculateFinalScore(test.iterator().next());
+		hashmap = testAnswers(test.iterator().next());
 		test2.setFinalScore(finalScore);
 		test2.setQuestionAnswersSet(hashmap);
 		test2.setScore(scores.get(0));
@@ -95,11 +95,11 @@ public class AttemptedTestService {
 	}
 
 	public void populateAttemptedTestPaper() {
-		// List<AttemptedTest> Att_testPaperList = createAttemptedTest();
-		// Att_testPaperList.forEach(x -> repository.save(x));
+		List<AttemptedTest> Att_testPaperList = createAttemptedTest();
+		Att_testPaperList.forEach(x -> repository.save(x));
 
-		AttemptedTest test2 = createOneAttemptedTest();
-		repository.save(test2);
+//		AttemptedTest test2 = createOneAttemptedTest();
+//		repository.save(test2);
 
 	}
 
@@ -137,7 +137,7 @@ public class AttemptedTestService {
 		// user_ans=(int)(Math.random()*(max-min+1)+min);
 		// System.out.println(testPaper.toString());
 
-		List<Question> obj1 = testPaper.getQuestionSet();
+		Set<Question> obj1 = testPaper.getQuestionSet();
 		for (Question q : obj1) {
 			user_ans = alphabet[(int) (Math.random() * 10 % 4)];
 			hashmap.put(q, user_ans);

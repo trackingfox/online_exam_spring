@@ -3,10 +3,12 @@ package com.JPA.onlineExam.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.JPA.onlineExam.model.TestPaper;
 import com.JPA.onlineExam.model.TopicWiseScore;
 import com.JPA.onlineExam.model.User;
 import com.JPA.onlineExam.repository.AttemptedTestRepository;
@@ -42,7 +44,7 @@ public class UserService {
 
 		List<User> userList = new ArrayList<>();
 
-//		List<TestPaper> TestPaperList = repository1.fetchTestPapers();
+		Set<TestPaper> TestPaperList = repository1.fetchTestPapers();
 
 //		List<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 2);
 
@@ -50,7 +52,7 @@ public class UserService {
 
 		user1.setUserName("Sharif");
 		user1.setPassword("password1");
-		user1.setTestPaperList(null);
+		user1.setTestPaperList(TestPaperList);
 		user1.setAttemptTestPaperList(null);
 		user1.setTopicWiseScoreList(TopicWiseScoreList);
 
@@ -63,7 +65,7 @@ public class UserService {
 		// System.out.println("jabjk1 : " + TopicWiseScoreList);
 		user2.setUserName("Ramesh");
 		user2.setPassword("password2");
-		user2.setTestPaperList(null);
+		user2.setTestPaperList(TestPaperList);
 		user2.setAttemptTestPaperList(null);
 		user2.setTopicWiseScoreList(TopicWiseScoreList);
 //		 user2.setFriends(friends);
@@ -74,7 +76,7 @@ public class UserService {
 		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(7, 9);
 		user3.setUserName("Nilesh");
 		user3.setPassword("password3");
-		user3.setTestPaperList(null);
+		user3.setTestPaperList(TestPaperList);
 		user3.setAttemptTestPaperList(null);
 		user3.setTopicWiseScoreList(TopicWiseScoreList);
 ////		user3.setFriends(friends);
