@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.JPA.onlineExam.model.User;
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "attemptTestPaperList", "friends",
