@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class AttemptedTest {
 	@Column(name = "finalScore")
 	private int finalScore;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TestPaper test;
 
 	@OneToOne
