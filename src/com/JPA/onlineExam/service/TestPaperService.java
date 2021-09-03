@@ -43,7 +43,7 @@ public class TestPaperService {
 		for (int i = 1; i <= 3; i++) {
 
 			Set<Question> results = repository2.fetchQuestions();
-			System.out.println(results.size());
+			// System.out.println(results.size());
 			// System.out.println(results.toString());
 			TestPaper test1 = new TestPaper();
 			test1.setQuestionSet(results);

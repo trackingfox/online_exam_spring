@@ -43,7 +43,7 @@ public class QuestionService {
 
 		ClassLoader classloader = getClass().getClassLoader();
 		String filePath = classloader.getResource(filename).getPath();
-		System.out.println(filePath);
+		// System.out.println(filePath);
 
 		List<Question> QuestionList = new CsvToBeanBuilder(new FileReader(filePath)).withType(Question.class).build()
 				.parse();

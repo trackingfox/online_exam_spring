@@ -2,6 +2,8 @@ package com.JPA.onlineExam.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -48,7 +50,7 @@ public class UserService {
 
 //		List<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 2);
 
-		List<TopicWiseScore> TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(1, 3);
+		Set<TopicWiseScore> TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(1, 3);
 
 		user1.setUserName("Sharif");
 		user1.setPassword("password1");
@@ -139,14 +141,14 @@ public class UserService {
 		return userList;
 	}
 
-	public List<User> update_userToDb() {
+	public Set<User> update_userToDb() {
 
-		List<User> friends = new ArrayList<User>();
+		Set<User> friends = new HashSet<User>();
 
 		List<User> User_obj = new ArrayList<User>();
 		User_obj = repository.FetchUser();
 
-		List<User> final_userList = new ArrayList<User>();
+		Set<User> final_userList = new HashSet<User>();
 
 		for (User u : User_obj) {
 			friends = Fetch_friendList();
@@ -158,22 +160,22 @@ public class UserService {
 
 	}
 
-	public List<User> Fetch_friendList() {
+	public Set<User> Fetch_friendList() {
+
+		// SortedSet<User> users = new TreeSet<User>(repository.FetchUser());
 
 		List<User> users = repository.FetchUser();
-
 		Collections.shuffle(users);
 
 		// System.out.println(users.size());
 
 		int length = (int) (Math.random() * (3 - 1 + 1) + 1);
 		// System.out.println(length);
-		List<User> randomUsers = users.subList(0, length);
+//		List<User> randomUsers = users.subList(0, length);
+//		SortedSet<User> randomUsers = users.subSet(user1, user5);
+//		Set<User> randomUsers = ImmutableSet.copyOf(Iterables.limit(users, length));
 
-//		for (User obj : randomUsers) {
-//
-//			System.out.println(obj.getUserName() + " " + obj.getPassword());
-//		}
+		Set<User> randomUsers = new LinkedHashSet<>(users.subList(0, length));
 		return randomUsers;
 	}
 
@@ -182,7 +184,7 @@ public class UserService {
 
 		userList.forEach(x -> repository.save(x));
 
-		List<User> final_userList = update_userToDb();
+		Set<User> final_userList = update_userToDb();
 		final_userList.forEach(x -> repository.save(x));
 
 	}

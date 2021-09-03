@@ -68,7 +68,7 @@ public class AttemptedTestService {
 				AttemptedTestPaperList.add(test2);
 				k++;
 
-				System.out.println(test2.toString());
+				// System.out.println(test2.toString());
 
 			}
 
