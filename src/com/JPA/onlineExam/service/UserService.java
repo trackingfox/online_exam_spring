@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.JPA.onlineExam.model.AttemptedTest;
 import com.JPA.onlineExam.model.TestPaper;
 import com.JPA.onlineExam.model.TopicWiseScore;
 import com.JPA.onlineExam.model.User;
@@ -33,6 +34,9 @@ public class UserService {
 	@Autowired
 	private TopicWiseScoreRepository repository3;
 
+//	@Autowired
+//	private DailyActivity repository4;
+
 	public List<User> createUser() {
 
 		User user1 = new User();
@@ -48,38 +52,38 @@ public class UserService {
 
 		Set<TestPaper> TestPaperList = repository1.fetchTestPapers();
 
-//		List<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 2);
+		Set<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 2);
 
 		Set<TopicWiseScore> TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(1, 3);
 
 		user1.setUserName("Sharif");
 		user1.setPassword("password1");
 		user1.setTestPaperList(TestPaperList);
-		user1.setAttemptTestPaperList(null);
+		user1.setAttemptTestPaperList(attemptTestPaperList);
 		user1.setTopicWiseScoreList(TopicWiseScoreList);
 
 		// user1.setFriends(friends);
 
 		userList.add(user1);
 
-//		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(3, 4);
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(3, 4);
 		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(4, 6);
 		// System.out.println("jabjk1 : " + TopicWiseScoreList);
 		user2.setUserName("Ramesh");
 		user2.setPassword("password2");
 		user2.setTestPaperList(TestPaperList);
-		user2.setAttemptTestPaperList(null);
+		user2.setAttemptTestPaperList(attemptTestPaperList);
 		user2.setTopicWiseScoreList(TopicWiseScoreList);
 //		 user2.setFriends(friends);
 
 		userList.add(user2);
 
-//		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(5, 6);
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(5, 6);
 		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(7, 9);
 		user3.setUserName("Nilesh");
 		user3.setPassword("password3");
 		user3.setTestPaperList(TestPaperList);
-		user3.setAttemptTestPaperList(null);
+		user3.setAttemptTestPaperList(attemptTestPaperList);
 		user3.setTopicWiseScoreList(TopicWiseScoreList);
 ////		user3.setFriends(friends);
 //

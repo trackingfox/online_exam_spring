@@ -14,11 +14,15 @@ import com.JPA.onlineExam.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "attemptTestPaperList", "friends",
+	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
+			"TestPaperList.questionSet", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",
 			"activity", "TopicWiseScoreList" })
 	@Query("FROM User ")
 	Set<User> FetchUserFinal();
 
+	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
+			"TestPaperList.topics", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",
+			"activity", "TopicWiseScoreList" })
 	@Query("FROM User ")
 	List<User> FetchUser();
 

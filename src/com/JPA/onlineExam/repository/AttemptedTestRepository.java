@@ -1,6 +1,6 @@
 package com.JPA.onlineExam.repository;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
@@ -13,7 +13,8 @@ import com.JPA.onlineExam.model.AttemptedTest;
 @Repository
 public interface AttemptedTestRepository extends JpaRepository<AttemptedTest, Long> {
 
-	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "test" })
+	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "test", "test.topics", "test.questionSet",
+			"questionAnswersSet" })
 	@Query("FROM AttemptedTest where Id>= ?1 AND Id <= ?2")
-	List<AttemptedTest> FetchAttemptedTestPaper1(long start, long end);
+	Set<AttemptedTest> FetchAttemptedTestPaper1(long start, long end);
 }

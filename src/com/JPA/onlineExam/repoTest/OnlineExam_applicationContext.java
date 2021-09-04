@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.JPA.onlineExam.repository.AttemptedTestRepository;
+import com.JPA.onlineExam.repository.UserRepository;
 import com.JPA.onlineExam.service.AttemptedTestService;
 import com.JPA.onlineExam.service.QuestionService;
 import com.JPA.onlineExam.service.ScoreService;
@@ -67,8 +67,8 @@ public class OnlineExam_applicationContext {
 		AttemptedTestService Att_testpaperservice = context.getBean(AttemptedTestService.class);
 		Att_testpaperservice.populateAttemptedTestPaper();
 
-		AttemptedTestRepository Att_testRepo = context.getBean(AttemptedTestRepository.class);
-		System.out.println(Att_testRepo.FetchAttemptedTestPaper1(1, 4));
+//		AttemptedTestRepository Att_testRepo = context.getBean(AttemptedTestRepository.class);
+//		System.out.println(Att_testRepo.FetchAttemptedTestPaper1(1, 4));
 
 		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
 		topicWiseScoreService.populateTopicWiseScore();
@@ -79,8 +79,8 @@ public class OnlineExam_applicationContext {
 		UserService userService = context.getBean(UserService.class);
 		userService.populateUser();
 
-//		UserRepository userRepo = context.getBean(UserRepository.class);
-//		System.out.println(userRepo.FetchUserFinal());
+		UserRepository userRepo = context.getBean(UserRepository.class);
+		System.out.println(userRepo.FetchUserFinal());
 
 	}
 
