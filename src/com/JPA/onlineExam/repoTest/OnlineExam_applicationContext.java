@@ -78,7 +78,7 @@ public class OnlineExam_applicationContext {
 
 		UserService userService = context.getBean(UserService.class);
 		userService.populateUser();
-
+		userService.populateFriends();
 		UserRepository userRepo = context.getBean(UserRepository.class);
 		System.out.println(userRepo.FetchUserFinal());
 

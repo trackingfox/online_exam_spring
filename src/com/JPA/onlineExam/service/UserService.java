@@ -147,15 +147,15 @@ public class UserService {
 
 	public Set<User> update_userToDb() {
 
-		Set<User> friends = new HashSet<User>();
-
-		List<User> User_obj = new ArrayList<User>();
-		User_obj = repository.FetchUser();
+		List<User> userList = new ArrayList<User>();
+		userList = repository.FetchUser();
 
 		Set<User> final_userList = new HashSet<User>();
 
-		for (User u : User_obj) {
-			friends = Fetch_friendList();
+		for (User u : userList) {
+			Set<User> friends = new HashSet<User>();
+			friends = Fetch_friendList(userList);
+			friends.remove(u);
 			u.setFriends(friends);
 			final_userList.add(u);
 		}
@@ -164,11 +164,11 @@ public class UserService {
 
 	}
 
-	public Set<User> Fetch_friendList() {
+	public Set<User> Fetch_friendList(List<User> users) {
 
 		// SortedSet<User> users = new TreeSet<User>(repository.FetchUser());
 
-		List<User> users = repository.FetchUser();
+		// List<User> users = repository.FetchUser();
 		Collections.shuffle(users);
 
 		// System.out.println(users.size());
@@ -187,6 +187,10 @@ public class UserService {
 		List<User> userList = createUser();
 
 		userList.forEach(x -> repository.save(x));
+
+	}
+
+	public void populateFriends() {
 
 		Set<User> final_userList = update_userToDb();
 		final_userList.forEach(x -> repository.save(x));
