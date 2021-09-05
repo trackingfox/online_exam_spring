@@ -40,7 +40,7 @@ public class TestPaperService {
 
 		Set<Topic> topics = repository3.FetchTopics();
 
-		for (int i = 1; i <= 3; i++) {
+		for (int i = 1; i <= 8; i++) {
 
 			Set<Question> results = repository2.fetchQuestions();
 			// System.out.println(results.size());

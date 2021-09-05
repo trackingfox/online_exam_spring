@@ -31,29 +31,43 @@ public class TopicService {
 		Topic topic1 = new Topic();
 		Topic topic2 = new Topic();
 		Topic topic3 = new Topic();
-//		Topics topic4 = new Topics();
-//		Topics topic5 = new Topics();
-//		Topics topic6 = new Topics();
+		Topic topic4 = new Topic();
+		Topic topic5 = new Topic();
+		Topic topic6 = new Topic();
+		Topic topic7 = new Topic();
+		Topic topic8 = new Topic();
 
-		// topic1.setTestPapers(testPapers);
-		topic1.setContent("Hello content");
+		topic1.setContent("Hello JAVA");
 		topic1.setTitletopic("JAVA");
-
-		// testPapers = FetchTestpaper(em);
-
-		// topic2.setTestPapers(testPapers);
-		topic2.setContent("Pqljjv");
-		topic2.setTitletopic("ANGULAR");
-
-		// testPapers = FetchTestpaper(em);
-
-		// topic3.setTestPapers(testPapers);
-		topic3.setContent("gdgdgdlk");
-		topic3.setTitletopic("PYTHON");
-
 		topicList.add(topic1);
+
+		topic2.setContent("Hi Angular");
+		topic2.setTitletopic("ANGULAR");
 		topicList.add(topic2);
+
+		topic3.setContent("hello Python");
+		topic3.setTitletopic("PYTHON");
 		topicList.add(topic3);
+
+		topic4.setContent("hello Sun");
+		topic4.setTitletopic("SUN");
+		topicList.add(topic4);
+
+		topic5.setContent("hello Moon");
+		topic5.setTitletopic("Moon");
+		topicList.add(topic5);
+
+		topic6.setContent("hello XMan");
+		topic6.setTitletopic("XMAN");
+		topicList.add(topic6);
+
+		topic7.setContent("hello HEMan");
+		topic7.setTitletopic("HeMAN");
+		topicList.add(topic7);
+
+		topic8.setContent("hello YYMan");
+		topic8.setTitletopic("YYMAN");
+		topicList.add(topic8);
 
 		return topicList;
 

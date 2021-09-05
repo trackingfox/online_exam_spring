@@ -41,10 +41,15 @@ public class AttemptedTestService {
 		this.repository = repository;
 	}
 
+	/*
+	 * For testing purpose we are creating list of attempted test. Practically only
+	 * one attempted test will be created at a time and also we have to pass the
+	 * testpaper id for creating respective attempted test.
+	 */
 	public List<AttemptedTest> createAttemptedTest() {
 
 //	    create the attempted test object  
-		Set<TestPaper> test = repository2.fetchTestPapers();
+		Set<TestPaper> testPapers = repository2.fetchTestPapers();
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 		List<AttemptedTest> AttemptedTestPaperList = new ArrayList<>();
 
@@ -52,9 +57,9 @@ public class AttemptedTestService {
 
 		int finalScore = 0;
 		int k = 0;
-		for (TestPaper test1 : test) {
-
-			int no_of_attempt = (int) (Math.random() * (3 - 1 + 1) + 1);
+		for (TestPaper test1 : testPapers) {
+			k = 0;
+			int no_of_attempt = (int) (Math.random() * (9 - 1 + 1) + 1);
 
 			for (int i = 0; i < no_of_attempt; i++) {
 
@@ -76,16 +81,16 @@ public class AttemptedTestService {
 		return AttemptedTestPaperList;
 	}
 
-	public AttemptedTest createOneAttemptedTest() {
+	public AttemptedTest createOneAttemptedTest(TestPaper testpaper) {
 		AttemptedTest test2 = new AttemptedTest();
-		Set<TestPaper> test = repository2.fetchTestPapers();
+		// Set<TestPaper> test = repository2.fetchTestPapers();
 		List<Score> scores = repository3.FetchScores();
 		Map<Question, Character> hashmap = new HashMap<Question, Character>();
 
 		int finalScore = 0;
-		test2.setTest(test.iterator().next());
-		finalScore = calculateFinalScore(test.iterator().next());
-		hashmap = testAnswers(test.iterator().next());
+		test2.setTest(testpaper);
+		finalScore = calculateFinalScore(testpaper);
+		hashmap = testAnswers(testpaper);
 		test2.setFinalScore(finalScore);
 		test2.setQuestionAnswersSet(hashmap);
 		test2.setScore(scores.get(0));
@@ -98,7 +103,7 @@ public class AttemptedTestService {
 		List<AttemptedTest> Att_testPaperList = createAttemptedTest();
 		Att_testPaperList.forEach(x -> repository.save(x));
 
-//		AttemptedTest test2 = createOneAttemptedTest();
+//		AttemptedTest test2 = createOneAttemptedTest(TestPaper testpaper);
 //		repository.save(test2);
 
 	}

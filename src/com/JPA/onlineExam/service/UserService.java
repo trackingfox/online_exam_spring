@@ -42,19 +42,19 @@ public class UserService {
 		User user1 = new User();
 		User user2 = new User();
 		User user3 = new User();
-//		User user4 = new User();
-//		User user5 = new User();
-//		User user6 = new User();
-//		User user7 = new User();
-//		User user8 = new User();
+		User user4 = new User();
+		User user5 = new User();
+		User user6 = new User();
+		User user7 = new User();
+		User user8 = new User();
 
 		List<User> userList = new ArrayList<>();
 
 		Set<TestPaper> TestPaperList = repository1.fetchTestPapers();
 
-		Set<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 2);
+		Set<AttemptedTest> attemptTestPaperList = repository2.FetchAttemptedTestPaper1(1, 5);
 
-		Set<TopicWiseScore> TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(1, 3);
+		Set<TopicWiseScore> TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(1, 1);
 
 		user1.setUserName("Sharif");
 		user1.setPassword("password1");
@@ -66,8 +66,8 @@ public class UserService {
 
 		userList.add(user1);
 
-		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(3, 4);
-		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(4, 6);
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(6, 8);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(2, 2);
 		// System.out.println("jabjk1 : " + TopicWiseScoreList);
 		user2.setUserName("Ramesh");
 		user2.setPassword("password2");
@@ -78,8 +78,8 @@ public class UserService {
 
 		userList.add(user2);
 
-		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(5, 6);
-		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(7, 9);
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(9, 16);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(3, 3);
 		user3.setUserName("Nilesh");
 		user3.setPassword("password3");
 		user3.setTestPaperList(TestPaperList);
@@ -89,56 +89,56 @@ public class UserService {
 //
 		userList.add(user3);
 
-//		atemptTestSet = FetchAttemptedTestPaper1(7, 8, em);
-//		scoreTopic = Fetch_scoreTopic(em);
-//		user4.setUserName("Somesh");
-//		user4.setPassword("password4");
-//		user4.setUnattemptTestSet(unattemptTestSet);
-//		user4.setAtemptTestSet(atemptTestSet);
-//		user4.setScoreTopic(scoreTopic);
-//////	    user4.setFriends(friends);
-////
-//		em.merge(user4);
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(17, 21);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(4, 4);
+		user4.setUserName("Somesh");
+		user4.setPassword("password4");
+		user4.setTestPaperList(TestPaperList);
+		user4.setAttemptTestPaperList(attemptTestPaperList);
+		user4.setTopicWiseScoreList(TopicWiseScoreList);
+////	    user4.setFriends(friends);
 //
-//		atemptTestSet = FetchAttemptedTestPaper1(9, 10, em);
-//		scoreTopic = Fetch_scoreTopic(em);
-//		user5.setUserName("Farukh");
-//		user5.setPassword("password5");
-//		user5.setUnattemptTestSet(unattemptTestSet);
-//		user5.setAtemptTestSet(atemptTestSet);
-//		user5.setScoreTopic(scoreTopic);
-//
-//		em.merge(user5);
-//
-//		atemptTestSet = FetchAttemptedTestPaper1(11, 12, em);
-//		scoreTopic = Fetch_scoreTopic(em);
-//		user6.setUserName("Sarukh");
-//		user6.setPassword("password6");
-//		user6.setUnattemptTestSet(unattemptTestSet);
-//		user6.setAtemptTestSet(atemptTestSet);
-//		user6.setScoreTopic(scoreTopic);
-//
-//		em.merge(user6);
-//
-//		atemptTestSet = FetchAttemptedTestPaper1(13, 14, em);
-//		scoreTopic = Fetch_scoreTopic(em);
-//		user7.setUserName("Amir");
-//		user7.setPassword("password7");
-//		user7.setUnattemptTestSet(unattemptTestSet);
-//		user7.setAtemptTestSet(atemptTestSet);
-//		user7.setScoreTopic(scoreTopic);
-//
-//		em.merge(user7);
-//
-//		atemptTestSet = FetchAttemptedTestPaper1(15, 16, em);
-//		scoreTopic = Fetch_scoreTopic(em);
-//		user8.setUserName("Alam");
-//		user8.setPassword("password8");
-//		user8.setUnattemptTestSet(unattemptTestSet);
-//		user8.setAtemptTestSet(atemptTestSet);
-//		user8.setScoreTopic(scoreTopic);
-//
-//		em.merge(user8);
+		userList.add(user4);
+
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(22, 25);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(5, 5);
+		user5.setUserName("Farukh");
+		user5.setPassword("password5");
+		user5.setTestPaperList(TestPaperList);
+		user5.setAttemptTestPaperList(attemptTestPaperList);
+		user5.setTopicWiseScoreList(TopicWiseScoreList);
+
+		userList.add(user5);
+
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(26, 31);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(6, 6);
+		user6.setUserName("Sarukh");
+		user6.setPassword("password6");
+		user6.setTestPaperList(TestPaperList);
+		user6.setAttemptTestPaperList(attemptTestPaperList);
+		user6.setTopicWiseScoreList(TopicWiseScoreList);
+
+		userList.add(user6);
+
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(32, 35);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(7, 7);
+		user7.setUserName("Amir");
+		user7.setPassword("password7");
+		user7.setTestPaperList(TestPaperList);
+		user7.setAttemptTestPaperList(attemptTestPaperList);
+		user7.setTopicWiseScoreList(TopicWiseScoreList);
+
+		userList.add(user7);
+
+		attemptTestPaperList = repository2.FetchAttemptedTestPaper1(36, 38);
+		TopicWiseScoreList = repository3.Fetch_TopicWiseScoreList(8, 8);
+		user8.setUserName("Alam");
+		user8.setPassword("password8");
+		user8.setTestPaperList(TestPaperList);
+		user8.setAttemptTestPaperList(attemptTestPaperList);
+		user8.setTopicWiseScoreList(TopicWiseScoreList);
+
+		userList.add(user8);
 
 //		update_userToDb();
 
@@ -155,7 +155,9 @@ public class UserService {
 		for (User u : userList) {
 			Set<User> friends = new HashSet<User>();
 			friends = Fetch_friendList(userList);
-			friends.remove(u);
+			if (friends.contains(u))
+				friends.remove(u);
+
 			u.setFriends(friends);
 			final_userList.add(u);
 		}
@@ -166,18 +168,9 @@ public class UserService {
 
 	public Set<User> Fetch_friendList(List<User> users) {
 
-		// SortedSet<User> users = new TreeSet<User>(repository.FetchUser());
-
-		// List<User> users = repository.FetchUser();
 		Collections.shuffle(users);
 
-		// System.out.println(users.size());
-
-		int length = (int) (Math.random() * (3 - 1 + 1) + 1);
-		// System.out.println(length);
-//		List<User> randomUsers = users.subList(0, length);
-//		SortedSet<User> randomUsers = users.subSet(user1, user5);
-//		Set<User> randomUsers = ImmutableSet.copyOf(Iterables.limit(users, length));
+		int length = (int) (Math.random() * (8 - 1 + 1) + 1);
 
 		Set<User> randomUsers = new LinkedHashSet<>(users.subList(0, length));
 		return randomUsers;

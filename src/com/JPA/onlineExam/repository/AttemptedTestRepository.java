@@ -17,4 +17,9 @@ public interface AttemptedTestRepository extends JpaRepository<AttemptedTest, Lo
 			"questionAnswersSet" })
 	@Query("FROM AttemptedTest where Id>= ?1 AND Id <= ?2")
 	Set<AttemptedTest> FetchAttemptedTestPaper1(long start, long end);
+
+//	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "test", "test.topics", "test.questionSet",
+//			"questionAnswersSet" })
+//	@Query("Select * FROM TestPaper where Id=(Select test_Id from AttemptedTest where Id = ?1)")
+//	AttemptedTest createOneAttemptedTest(TestPaper testpaper);
 }

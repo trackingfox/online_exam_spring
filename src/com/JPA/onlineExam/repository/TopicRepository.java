@@ -11,7 +11,7 @@ import com.JPA.onlineExam.model.Topic;
 @Repository
 public interface TopicRepository extends JpaRepository<Topic, Long> {
 
-	@Query("FROM Topic where Id>=1 AND Id <=3")
+	@Query("FROM Topic where Id>=1 AND Id <=8")
 	Set<Topic> FetchTopics();
 
 }

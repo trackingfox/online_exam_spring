@@ -68,7 +68,7 @@ public class OnlineExam_applicationContext {
 		Att_testpaperservice.populateAttemptedTestPaper();
 
 //		AttemptedTestRepository Att_testRepo = context.getBean(AttemptedTestRepository.class);
-//		System.out.println(Att_testRepo.FetchAttemptedTestPaper1(1, 4));
+//		System.out.println(Att_testRepo.FetchAttemptedTestPaper1(1, 20));
 
 		TopicWiseScoreService topicWiseScoreService = context.getBean(TopicWiseScoreService.class);
 		topicWiseScoreService.populateTopicWiseScore();
@@ -78,9 +78,10 @@ public class OnlineExam_applicationContext {
 
 		UserService userService = context.getBean(UserService.class);
 		userService.populateUser();
-		userService.populateFriends();
+		// userService.populateFriends();
+
 		UserRepository userRepo = context.getBean(UserRepository.class);
-		System.out.println(userRepo.FetchUserFinal());
+		System.out.println(userRepo.FetchUserFinal().toString());
 
 	}
 

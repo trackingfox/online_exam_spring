@@ -16,12 +16,11 @@ public class Topic {
 	@Column(name = "Id")
 	private long Id;
 
-//	@ManyToMany
-//	private List<TestPaper> TestPapers;
-
-	// private List<AttemptedTest> TestAttempted;
 	private String titletopic;
 	private String content;
+
+//	@OneToMany(fetch = FetchType.LAZY)
+//	private Set<Testpaper> testpapers;
 
 	public long getId() {
 		return Id;

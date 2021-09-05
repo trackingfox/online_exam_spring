@@ -21,9 +21,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Set<User> FetchUserFinal();
 
 	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
-			"TestPaperList.topics", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",
-			"activity", "TopicWiseScoreList" })
+			/* "TestPaperList.questionSet", */ "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet",
+			/* "friends", */ "activity", "TopicWiseScoreList" })
 	@Query("FROM User ")
 	List<User> FetchUser();
+
+//	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
+//			"TestPaperList.questionSet", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",
+//			"activity", "TopicWiseScoreList" })
+//	@Query("Select percentile, score from score where score.Id=(Select score_Id from topicwisescore where topic_id =(Select TopicWiseScoreList_Id from TopicWiseScoreList where User_Id =(Select Id from user where userName =?1 AND password = ?2))) ")
+//	Score FetchUserScoreDetails(long Id);
+
+//-------------------------------------------------------------------------------------------------------------------	
+
+//-------------------------------------------------------------------------------------------------------------------
+//	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
+//			"TestPaperList.questionSet", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",
+//			"activity", "TopicWiseScoreList" })
+//	@Query("Select user.userName from user where Id=(Select friends_Id from user_user where user_Id = (Select Id from user where userName =?1 AND password = ?2 )) ")
+//	List<User> FetchUserFriends(long Id);
 
 }
