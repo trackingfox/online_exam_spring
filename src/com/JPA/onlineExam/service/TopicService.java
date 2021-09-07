@@ -37,35 +37,35 @@ public class TopicService {
 		Topic topic8 = new Topic();
 
 		topic1.setContent("Hello JAVA");
-		topic1.setTitletopic("JAVA");
+		topic1.setTitle("JAVA");
 		topicList.add(topic1);
 
 		topic2.setContent("Hi Angular");
-		topic2.setTitletopic("ANGULAR");
+		topic2.setTitle("ANGULAR");
 		topicList.add(topic2);
 
 		topic3.setContent("hello Python");
-		topic3.setTitletopic("PYTHON");
+		topic3.setTitle("PYTHON");
 		topicList.add(topic3);
 
 		topic4.setContent("hello Sun");
-		topic4.setTitletopic("SUN");
+		topic4.setTitle("SUN");
 		topicList.add(topic4);
 
 		topic5.setContent("hello Moon");
-		topic5.setTitletopic("Moon");
+		topic5.setTitle("Moon");
 		topicList.add(topic5);
 
 		topic6.setContent("hello XMan");
-		topic6.setTitletopic("XMAN");
+		topic6.setTitle("XMAN");
 		topicList.add(topic6);
 
 		topic7.setContent("hello HEMan");
-		topic7.setTitletopic("HeMAN");
+		topic7.setTitle("HeMAN");
 		topicList.add(topic7);
 
 		topic8.setContent("hello YYMan");
-		topic8.setTitletopic("YYMAN");
+		topic8.setTitle("YYMAN");
 		topicList.add(topic8);
 
 		return topicList;

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,7 +75,7 @@ public class QuestionService {
 		populateQuestionWithTopics();
 	}
 
-//
+	@Transactional
 	public void populateQuestionWithTopics() throws IllegalStateException, FileNotFoundException {
 
 		List<QuestionTemp> questionTempList = importQuestionTempFromCsv();
@@ -83,8 +85,10 @@ public class QuestionService {
 		for (QuestionTemp Q : questionTempList) {
 
 			Question Q1 = new Question();
-			// List<Topic> databaseTopic = topicRepository.findByTitle(Q.getPrimaryTopic());
-			List<Topic> databaseTopic = topicRepository.findAll();
+
+			// For Primary Topic
+			List<Topic> databaseTopic = topicRepository.findByTitle(Q.getPrimaryTopic());
+			// List<Topic> databaseTopic = topicRepository.findAll();
 			System.out.println("from database " + databaseTopic);
 
 			if (databaseTopic.isEmpty()) {
@@ -97,22 +101,32 @@ public class QuestionService {
 			} else {
 				Q1.setPrimaryTopic(databaseTopic.get(0));
 			}
-//			List<Topic> sT = new ArrayList<>();
-//			String str = Q.getSecondaryTopics();
-//
-//			String[] TopicsStr = str.split(",");
+
+			// For secondary Topic
+			List<Topic> sT = new ArrayList<>();
+			String str = Q.getSecondaryTopics();
+
+			String[] TopicsStr = str.split(",");
 
 			// System.out.println(TopicsStr);
 			// Setting the secondary topics after splitting the string
-//			for (String s : TopicsStr) {
-//
-//				Topic newTopic = new Topic();
-//				newTopic.setTitletopic(s);
-//				newTopic.setContent("hello");
-//				sT.add(newTopic);
-//			}
+			for (String s : TopicsStr) {
+				List<Topic> databaseTopic2 = topicRepository.findByTitle(s);
+				if (databaseTopic2.isEmpty()) {
 
-//			Q1.setSecond_Topics(sT);
+					Topic T1 = new Topic();
+					T1.setTitle(s);
+					T1.setContent("hello Topic");
+					sT.add(T1);
+
+				} else {
+
+					sT.add(databaseTopic2.get(0));
+				}
+
+			}
+			Q1.setSecond_Topics(sT);
+
 			Q1.setQuestion(Q.getQuestion());
 			Q1.setChoice_1(Q.getChoice_1());
 			Q1.setChoice_2(Q.getChoice_2());
@@ -122,10 +136,10 @@ public class QuestionService {
 			Q1.setLevel(Q.getLevel());
 
 			questionList.add(Q1);
-			// repository.save(Q1);
+			repository.save(Q1);
 		}
 		// System.out.println(questionList);
-		questionList.forEach(x -> repository.save(x));
+		// questionList.forEach(x -> repository.save(x));
 
 	}
 

@@ -40,7 +40,7 @@ public class Question {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Topic> second_Topics;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Topic primaryTopic;
 	// private String tag;
 

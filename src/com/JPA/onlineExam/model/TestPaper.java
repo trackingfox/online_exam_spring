@@ -25,7 +25,7 @@ public class TestPaper {
 	private String testName;
 
 	@Column(name = "testLevel")
-	private String testLevel;
+	private Integer testLevel;
 
 	@Column(name = "testPaperType")
 	private Integer testPaperType;// 1-global, 2-topic wise testPaper, 3- miscellaneous, 4- custom
@@ -52,12 +52,16 @@ public class TestPaper {
 		this.testName = testName;
 	}
 
-	public String getTestLevel() {
+	public Integer getTestLevel() {
 		return testLevel;
 	}
 
-	public void setTestLevel(String testLevel) {
+	public void setTestLevel(Integer testLevel) {
 		this.testLevel = testLevel;
+	}
+
+	public void setTestPaperType(Integer testPaperType) {
+		this.testPaperType = testPaperType;
 	}
 
 	public int getTestPaperType() {
