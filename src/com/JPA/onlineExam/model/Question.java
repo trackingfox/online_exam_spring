@@ -1,14 +1,19 @@
 package com.JPA.onlineExam.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Embeddable
+//@Embeddable
 @Entity
 @Table(name = "Question")
 public class Question {
@@ -29,6 +34,15 @@ public class Question {
 	private String choice_4;
 	@Column(length = 1000)
 	private String answer;
+	@Column(length = 1000)
+	private String level; // 1-for easy, 2-moderate, 3- difficult
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Topic> second_Topics;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Topic primaryTopic;
+	// private String tag;
 
 	public Question() {
 
@@ -42,20 +56,12 @@ public class Question {
 		Id = id;
 	}
 
-	public void setQuestion(String question) {
-		this.Question = question;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
 	public String getQuestion() {
 		return Question;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public void setQuestion(String question) {
+		Question = question;
 	}
 
 	public String getChoice_1() {
@@ -90,10 +96,43 @@ public class Question {
 		this.choice_4 = choice_4;
 	}
 
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public List<Topic> getSecond_Topics() {
+		return second_Topics;
+	}
+
+	public void setSecond_Topics(List<Topic> second_Topics) {
+		this.second_Topics = second_Topics;
+	}
+
+	public Topic getPrimaryTopic() {
+		return primaryTopic;
+	}
+
+	public void setPrimaryTopic(Topic primaryTopic) {
+		this.primaryTopic = primaryTopic;
+	}
+
 	@Override
 	public String toString() {
 		return "Question [Id=" + Id + ", Question=" + Question + ", choice_1=" + choice_1 + ", choice_2=" + choice_2
-				+ ", choice_3=" + choice_3 + ", choice_4=" + choice_4 + ", answer=" + answer + "]";
+				+ ", choice_3=" + choice_3 + ", choice_4=" + choice_4 + ", answer=" + answer + ", level=" + level
+				+ ", second_Topics=" + second_Topics + ", primaryTopic=" + primaryTopic + "]";
 	}
 
 }

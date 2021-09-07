@@ -1,5 +1,6 @@
 package com.JPA.onlineExam.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -26,10 +27,11 @@ public class TestPaper {
 	@Column(name = "testLevel")
 	private String testLevel;
 
-//(fetch = FetchType.EAGER)
+	@Column(name = "testPaperType")
+	private Integer testPaperType;// 1-global, 2-topic wise testPaper, 3- miscellaneous, 4- custom
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	private Set<Topic> topics;
+	private List<Topic> topics;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	private Set<Question> questionSet;
@@ -58,12 +60,20 @@ public class TestPaper {
 		this.testLevel = testLevel;
 	}
 
-	public Set<Topic> getTopics() {
+	public int getTestPaperType() {
+		return testPaperType;
+	}
+
+	public void setTestPaperType(int testPaperType) {
+		this.testPaperType = testPaperType;
+	}
+
+	public List<Topic> getTopics() {
 		return topics;
 	}
 
-	public void setTopics(Set<Topic> topics) {
-		this.topics = topics;
+	public void setTopics(List<Topic> topics2) {
+		this.topics = topics2;
 	}
 
 	public Set<Question> getQuestionSet() {
@@ -76,8 +86,8 @@ public class TestPaper {
 
 	@Override
 	public String toString() {
-		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", topics=" + topics
-				+ ", questionSet=" + questionSet + "]";
+		return "TestPaper [Id=" + Id + ", testName=" + testName + ", testLevel=" + testLevel + ", testPaperType="
+				+ testPaperType + ", topics=" + topics + ", questionSet=" + questionSet + "]";
 	}
 
 }

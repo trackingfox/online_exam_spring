@@ -2,22 +2,32 @@ package com.JPA.onlineExam.model;
 
 public class QuestionTemp {
 
-	private long Qid;
+	private long Id;
 	private String Question;
 	private String choice_1;
 	private String choice_2;
 	private String choice_3;
 	private String choice_4;
 	private String answer;
+	private String primaryTopic;
+	private String secondaryTopics;
 
-	private TestPaper test;
+//	private TestPaper test;
 
-	public long getQid() {
-		return Qid;
+//	private Topic primaryTopic;
+//
+//	private List<Topic> secondaryTopic;
+
+	private String tag;
+
+	private String level;
+
+	public long getId() {
+		return Id;
 	}
 
-	public void setQid(long qid) {
-		Qid = qid;
+	public void setId(long id) {
+		Id = id;
 	}
 
 	public String getQuestion() {
@@ -68,19 +78,43 @@ public class QuestionTemp {
 		this.answer = answer;
 	}
 
-	public TestPaper getTest() {
-		return test;
+	public String getPrimaryTopic() {
+		return primaryTopic;
 	}
 
-	public void setTest(TestPaper test) {
-		this.test = test;
+	public void setPrimaryTopic(String primaryTopic) {
+		this.primaryTopic = primaryTopic;
+	}
+
+	public String getSecondaryTopics() {
+		return secondaryTopics;
+	}
+
+	public void setSecondaryTopics(String secondaryTopics) {
+		this.secondaryTopics = secondaryTopics;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
 	}
 
 	@Override
 	public String toString() {
-		return "QuestionTemp [Qid=" + Qid + ", Question=" + Question + ", choice_1=" + choice_1 + ", choice_2="
-				+ choice_2 + ", choice_3=" + choice_3 + ", choice_4=" + choice_4 + ", answer=" + answer + ", test="
-				+ test + "]";
+		return "QuestionTemp [Id=" + Id + ", Question=" + Question + ", choice_1=" + choice_1 + ", choice_2=" + choice_2
+				+ ", choice_3=" + choice_3 + ", choice_4=" + choice_4 + ", answer=" + answer + ", primaryTopic="
+				+ primaryTopic + ", secondaryTopics=" + secondaryTopics + ", tag=" + tag + ", level=" + level + "]";
 	}
 
 }
