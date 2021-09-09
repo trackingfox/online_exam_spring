@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.JPA.onlineExam.repository.TestPaperRepository;
 import com.JPA.onlineExam.service.AttemptedTestService;
 import com.JPA.onlineExam.service.QuestionService;
 import com.JPA.onlineExam.service.ScoreService;
@@ -53,11 +54,11 @@ public class OnlineExam_applicationContext {
 //		TopicRepository topicRepo = context.getBean(TopicRepository.class);
 //		System.out.println(topicRepo.FetchTopics());
 
-//		TestPaperService testpaperservice = context.getBean(TestPaperService.class);
-//		testpaperservice.populateTestPaper();
+		TestPaperService testpaperservice = context.getBean(TestPaperService.class);
+		testpaperservice.populateTestPaper();
 //
-//		TestPaperRepository testPaperRepo = context.getBean(TestPaperRepository.class);
-//		System.out.println(testPaperRepo.fetchTestPapers());
+		TestPaperRepository testPaperRepo = context.getBean(TestPaperRepository.class);
+		System.out.println(testPaperRepo.fetchTestPapers());
 //
 //		ScoreService Score_service = context.getBean(ScoreService.class);
 //		Score_service.populateScore();
