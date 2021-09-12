@@ -22,8 +22,18 @@ public class AttemptedTest {
 	@Column(name = "Id")
 	private long Id;
 
+	private boolean isFinished = false;
+
 //	@Column(name = "user_ans")
 //	private char user_ans;
+
+	public boolean isFinished() {
+		return isFinished;
+	}
+
+	public void setFinished(boolean isFinished) {
+		this.isFinished = isFinished;
+	}
 
 	@Column(name = "finalScore")
 	private int finalScore;
