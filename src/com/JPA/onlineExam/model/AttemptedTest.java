@@ -1,5 +1,6 @@
 package com.JPA.onlineExam.model;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "AttemptedTest")
@@ -22,6 +25,9 @@ public class AttemptedTest {
 	@Column(name = "Id")
 	private long Id;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
+
 	private boolean isFinished = false;
 
 //	@Column(name = "user_ans")
@@ -29,6 +35,14 @@ public class AttemptedTest {
 
 	public boolean isFinished() {
 		return isFinished;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public void setFinished(boolean isFinished) {

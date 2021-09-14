@@ -36,7 +36,7 @@ public class TestPaperService {
 	}
 
 	// GENERATE CUSTOMIZE TESTPAPER
-	public void generateCustomizeTestPaper(Integer testPaperType, List<Long> TopicIds) {
+	public void generateCustomizeTestPaper(Integer testPaperType, List<Long> TopicIds, Integer testPaperLevel) {
 
 		Set<Question> results = QRepository.fetchQuestions();
 		List<Topic> topics = new ArrayList<>();
@@ -70,7 +70,7 @@ public class TestPaperService {
 	}
 
 //GENERATE TOPIC WISE TESTPAPER
-	public void generateTopicWiseTestPaper(Integer testPaperType, long TopicId) {
+	public void generateTopicWiseTestPaper(Integer testPaperType, long TopicId, Integer testPaperLevel) {
 
 		Set<Question> results = QRepository.fetchQuestions();
 		List<Topic> topics = new ArrayList<>();
@@ -100,7 +100,7 @@ public class TestPaperService {
 	}
 
 //GENERATE GLOBAL TESTPAPER
-	public void generateGlobalTestPaper(Integer testPaperType) {
+	public void generateGlobalTestPaper(Integer testPaperType, Integer testPaperLevel) {
 
 		Set<Question> results = QRepository.fetchQuestions();
 		List<Topic> topics = TopicRepository.FetchTopics();
@@ -125,6 +125,12 @@ public class TestPaperService {
 		testpaper.setTestPaperType(testPaperType);
 
 		TestPaperRepository.save(testpaper);
+	}
+
+//GENERATE MISCELLANEOUS TEST	
+	public void generateMiscellaneousTestPaper(Integer testPaperType, Integer testPaperLevel) {
+
+		generateGlobalTestPaper((Integer) 4, (Integer) 3);
 	}
 
 //--------------------------------------------------------------------------------------------------------------------------------------------

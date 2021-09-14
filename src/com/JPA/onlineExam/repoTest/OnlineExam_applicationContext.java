@@ -36,8 +36,8 @@ public class OnlineExam_applicationContext {
 
 		TestPaperService testpaperservice = context.getBean(TestPaperService.class);
 //		testpaperservice.populateTestPaper();
-		testpaperservice.generateGlobalTestPaper((Integer) 1);
-		testpaperservice.generateTopicWiseTestPaper((Integer) 2, (long) 1);
+		testpaperservice.generateGlobalTestPaper((Integer) 1, (Integer) 3);
+		testpaperservice.generateTopicWiseTestPaper((Integer) 2, (long) 1, (Integer) 3);
 		List<Long> TopicIds = new ArrayList<Long>() {
 			{
 				add((long) 1);
@@ -45,8 +45,8 @@ public class OnlineExam_applicationContext {
 				add((long) 3);
 			}
 		};
-		testpaperservice.generateCustomizeTestPaper((Integer) 3, TopicIds);
-		// testpaperservice.generateMiscellaneousTestPaper((Integer) 4);
+		testpaperservice.generateCustomizeTestPaper((Integer) 3, TopicIds, (Integer) 3);
+		testpaperservice.generateMiscellaneousTestPaper((Integer) 4, (Integer) 3);
 
 		// Print testpaper by ID that we entered
 		TestPaperRepository testPaperRepo = context.getBean(TestPaperRepository.class);
