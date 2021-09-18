@@ -37,25 +37,33 @@ public class UserService {
 //	@Autowired
 //	private DailyActivity repository4;
 
-	public void viewUserProfile() {
+	public void viewBasicUserDetail(long userId) {
 
 	}
 
-	public void viewTestPaper() {
+	public void viewDailyActivity(long userId) {
 
 	}
 
-	public void viewAttemptedTestPaper() {
+	public void viewFriendList(long userId) {
 
 	}
 
-	// SCORE SHOWING IN DASHBOARD
-	public void AverageScore() {
+	public void viewTestPaper(long userId) {
+
+	}
+
+	public void viewAttemptedTestPaper(long userId) {
+
+	}
+
+	// SCORE AND PERCENTILE SHOWING IN DASHBOARD
+	public void AverageScore(long userId) {
 
 	}
 
 	// LEVEL SHOWING IN DASHBOARD
-	public void levelProgress() {
+	public void levelProgress(long userId) {
 
 	}
 
