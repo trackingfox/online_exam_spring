@@ -1,6 +1,7 @@
 package com.JPA.onlineExam.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -26,6 +27,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			/* "friends", */ "activity", "TopicWiseScoreList" })
 	@Query("FROM User ")
 	List<User> FetchUser();
+
+	@Override
+	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TopicWiseScoreList", "activity" })
+	Optional<User> findById(Long Id);
 
 //	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TestPaperList", "TestPaperList.topics",
 //			"TestPaperList.questionSet", "attemptTestPaperList", "attemptTestPaperList.questionAnswersSet", "friends",

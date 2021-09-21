@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,38 +33,57 @@ public class UserService {
 	private AttemptedTestRepository AttTestRepository;
 
 	@Autowired
-	private TopicWiseScoreRepository TopiWiseScoreRepository;
+	private TopicWiseScoreRepository TopicWiseScoreRepository;
 
 //	@Autowired
 //	private DailyActivity repository4;
 
 	public void viewBasicUserDetail(long userId) {
 
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
 	}
 
 	public void viewDailyActivity(long userId) {
+
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
 
 	}
 
 	public void viewFriendList(long userId) {
 
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
+
 	}
 
 	public void viewTestPaper(long userId) {
 
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
 	}
 
 	public void viewAttemptedTestPaper(long userId) {
+
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
 
 	}
 
 	// SCORE AND PERCENTILE SHOWING IN DASHBOARD
 	public void AverageScore(long userId) {
 
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
+
 	}
 
 	// LEVEL SHOWING IN DASHBOARD
 	public void levelProgress(long userId) {
+
+		Optional<User> u = UserRepository.findById(userId);
+		User user = u.get();
 
 	}
 
@@ -101,7 +121,7 @@ public class UserService {
 
 		Set<AttemptedTest> attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(1, 5);
 
-		Set<TopicWiseScore> TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(1, 1);
+		Set<TopicWiseScore> TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(1, 1);
 
 		user1.setUserName("Sharif");
 		user1.setPassword("password1");
@@ -114,7 +134,7 @@ public class UserService {
 		userList.add(user1);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(6, 8);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(2, 2);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(2, 2);
 		// System.out.println("jabjk1 : " + TopicWiseScoreList);
 		user2.setUserName("Ramesh");
 		user2.setPassword("password2");
@@ -126,7 +146,7 @@ public class UserService {
 		userList.add(user2);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(9, 16);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(3, 3);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(3, 3);
 		user3.setUserName("Nilesh");
 		user3.setPassword("password3");
 		user3.setTestPaperList(TestPaperList);
@@ -137,7 +157,7 @@ public class UserService {
 		userList.add(user3);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(17, 21);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(4, 4);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(4, 4);
 		user4.setUserName("Somesh");
 		user4.setPassword("password4");
 		user4.setTestPaperList(TestPaperList);
@@ -148,7 +168,7 @@ public class UserService {
 		userList.add(user4);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(22, 25);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(5, 5);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(5, 5);
 		user5.setUserName("Farukh");
 		user5.setPassword("password5");
 		user5.setTestPaperList(TestPaperList);
@@ -158,7 +178,7 @@ public class UserService {
 		userList.add(user5);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(26, 31);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(6, 6);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(6, 6);
 		user6.setUserName("Sarukh");
 		user6.setPassword("password6");
 		user6.setTestPaperList(TestPaperList);
@@ -168,7 +188,7 @@ public class UserService {
 		userList.add(user6);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(32, 35);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(7, 7);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(7, 7);
 		user7.setUserName("Amir");
 		user7.setPassword("password7");
 		user7.setTestPaperList(TestPaperList);
@@ -178,7 +198,7 @@ public class UserService {
 		userList.add(user7);
 
 		attemptTestPaperList = AttTestRepository.FetchAttemptedTestPaper1(36, 38);
-		TopicWiseScoreList = TopiWiseScoreRepository.Fetch_TopicWiseScoreList(8, 8);
+		TopicWiseScoreList = TopicWiseScoreRepository.Fetch_TopicWiseScoreList(8, 8);
 		user8.setUserName("Alam");
 		user8.setPassword("password8");
 		user8.setTestPaperList(TestPaperList);
