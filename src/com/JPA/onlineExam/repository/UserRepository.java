@@ -28,6 +28,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query("FROM User ")
 	List<User> FetchUser();
 
+	@Query("FROM User ")
+	User fetchUserIdFromUname(String username, String password);
+
 	@Override
 	@EntityGraph(type = EntityGraphType.FETCH, attributePaths = { "TopicWiseScoreList", "activity" })
 	Optional<User> findById(Long Id);
