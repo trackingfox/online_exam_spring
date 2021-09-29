@@ -42,6 +42,7 @@ public class UserService {
 
 		Optional<User> u = UserRepository.findById(userId);
 		User user = u.get();
+		user.getUserName();
 	}
 
 	public void viewDailyActivity(long userId) {
@@ -58,16 +59,20 @@ public class UserService {
 
 	}
 
-	public void viewTestPaper(long userId) {
+	public Set<TestPaper> viewTestPaper(long userId) {
 
 		Optional<User> u = UserRepository.findById(userId);
 		User user = u.get();
+
+		return user.getTestPaperList();
 	}
 
-	public void viewAttemptedTestPaper(long userId) {
+	public Set<AttemptedTest> viewAttemptedTestPaper(long userId) {
 
 		Optional<User> u = UserRepository.findById(userId);
 		User user = u.get();
+
+		return user.getAttemptTestPaperList();
 
 	}
 
@@ -76,6 +81,7 @@ public class UserService {
 
 		Optional<User> u = UserRepository.findById(userId);
 		User user = u.get();
+		Set<TopicWiseScore> Tp = user.getTopicWiseScoreList();
 
 	}
 
