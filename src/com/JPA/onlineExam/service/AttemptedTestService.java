@@ -59,7 +59,7 @@ public class AttemptedTestService {
 	}
 
 	// UPDATE ANSWER FOR ONE QUESTION
-	public void updateAnswerForOneQuestion() {
+	public void updateAnswerForOneQuestion(long attemptId, long qId, char user_ans) {
 
 	}
 

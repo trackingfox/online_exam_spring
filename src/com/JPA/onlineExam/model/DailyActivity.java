@@ -17,6 +17,7 @@ public class DailyActivity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private long Id;
+	// date time stamp
 	private Date day;
 	private String testlink;
 
