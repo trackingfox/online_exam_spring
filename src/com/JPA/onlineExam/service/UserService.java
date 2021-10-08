@@ -105,9 +105,9 @@ public class UserService {
 	}
 
 	public void UserLogin(String username, String password) {
-		User Fuser = UserRepository.fetchUserIdFromUname(username, password);
+		// User Fuser = UserRepository.fetchUserIdFromUname(username, password);
 
-		Long userId = Fuser.getId();
+		// Long userId = Fuser.getId();
 
 		Optional<User> u = UserRepository.findById(userId);
 		User user = u.get();
