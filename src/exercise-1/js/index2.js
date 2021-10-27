@@ -194,3 +194,142 @@ function Stopwatch(){
 }
 
 
+
+//prototype Vs Instance members
+function Circle5(radius){
+    this.radius = radius;
+
+    this.move = function() {
+        this.draw();
+        console.log('move');
+    }
+    // this.draw = function(){
+    //     console.log('draw');
+    // }
+}
+
+Circle5.prototype.draw = function(){
+    this.move();
+    console.log('draw');
+}
+
+const c1 = new Circle5(1);
+const c2 = new Circle5(1);
+
+Circle5.prototype.toString = function() {
+    return 'Circle with radius '+ this.radius;
+}
+
+
+//Iterating instance and prototype members
+function Circle6(radius){
+    this.radius = radius;
+
+    this.move = function() {
+        console.log('move');
+    }
+}
+
+const c3 = new Circle6(1);
+
+//prototype members
+Circle6.prototype.draw = function(){
+    console.log('draw');
+}
+
+//c3.draw();
+
+//Returns instance members
+console.log(Object.keys(c1));
+
+//Returns all members (instance+ prototype)
+for(let key in c1) console.log(key);
+
+
+//calling the super constructor
+function Shape(color){
+    this.color = color;
+}
+
+Shape.prototype.duplicate = function() {
+    console.log('duplicate');
+}
+
+function Circle7(radius , color){
+    Shape.call(this, color);
+
+    this.radius = radius;
+}
+
+Circle7.prototype = Object.create(Shape.prototype);
+Circle7.prototype.constructor = Circle7;
+
+Circle7.prototype.draw = function(){
+    console.log('draw');
+}
+
+
+
+//PROTOTYPICAL INHERITANCE
+
+function HtmlElement(){
+    this.click = function(){
+        console.log('clicked');
+    }
+}
+
+HtmlElement.prototype.focus = function(){
+    console.log('focussed');
+}
+
+function HtmlSelectElement1(items1 = []){
+    this.items1 = items1;
+}
+
+//POLYMORPHISM
+
+function HTMLSelectElement(items = []){
+    this.items = items;
+
+    this.addItem = function(item){
+        this.items.push(item);
+    }
+
+    this.removeItem = function(item){
+        this.items.splice(this.items.indexOf(item),1);
+    }
+
+    this.render = function(){
+        return `
+        <select>${this.items.map(item => `
+            <option>${item}</option>`).join('')}
+        </select>`;
+    }
+}
+
+HtmlSelectElement.prototype = new HtmlElement();
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+//const renderItem = item => `<option>${item}</option>`;
+
+
+function HtmlImageElement(src){
+    this.src = src;
+
+    this.render = function(){
+        return `<img src="${this.src}" />`
+    }
+}
+
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+
+
+
+
+
+
+
+
+
