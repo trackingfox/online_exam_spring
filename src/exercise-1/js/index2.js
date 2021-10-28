@@ -328,6 +328,19 @@ HtmlImageElement.prototype.constructor = HtmlImageElement;
 
 
 
+//HOISTING
+
+//function declaration
+function sayHello(){};
+
+
+
+//function expression
+const sayGoodbye = function(){};
+
+
+
+
 
 
 
