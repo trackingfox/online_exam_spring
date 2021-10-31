@@ -1,6 +1,6 @@
 
 
-console.log("hello world");
+    console.log("hello world");
 
 
 
@@ -8,35 +8,35 @@ console.log("hello world");
 
 
 
-const numbers = [1, 2, 3];
+const numbers = [1,2,3];
 const joined = numbers.join(',');
 console.log(joined);
 
 const message = 'This is my first message';
-const parts = message.split(' ');
+const parts = message .split(' ');
 console.log(parts);
 
 const combined = parts.join('-');
 console.log(combined);
 
-try {
-    const numbers = [1, 2, 3, 4];
-    const count = countOccurences(null, 1);
-    console.log(count);
-}
-
-catch (e) {
+try{
+        const numbers =[1,2,3,4];
+        const count = countOccurences (null,1);
+        console.log(count);
+    }
+    
+catch(e){
     console.log(e.message);
-}
+}    
 
-function countOccurences(array, searchElement) {
-    if (!Array.isArray(array))
+function countOccurences(array, searchElement){
+    if(!Array.isArray(array))
         throw new Error('Invalid array');
 
-    return array.reduce((accumulator, current) => {
-        const occurence = (current === searchElement) ? 1 : 0;
-        return accumulator + occurence;
-    }, 0);
+     return array.reduce((accumulator, current) =>{
+         const occurence = (current === searchElement) ? 1 : 0;
+         return accumulator + occurence;
+     }, 0);   
 }
 
 // function sum(a,b){
@@ -107,25 +107,25 @@ function countOccurences(array, searchElement) {
 // const another = new Circle(1); 
 
 
-// function Circle(radius) {
-//     let color = 'red';
+function Circle(radius){
+    let color ='red';
 
-//     this.radius = radius;
-//     this.defaultLocation = { x: 0, y: 0 };
+    this.radius = radius;
+    this.defaultLocation = {x: 0, y:0};
 
-//     this.computeOptimumLocation = function (factor) {
+    this.computeOptimumLocation = function(factor){
 
-//     }
+    }
 
-//     this.draw = function () {
-//         this.computeOptimumLocation(0.1);
+    this.draw = function(){
+        this.computeOptimumLocation(0.1);
 
-//         console.log('draw');
-//     };
-// }
+        console.log('draw');
+    };
+}
 
-// const circle = new Circle(10);
-// circle.draw();
+const circle = new Circle(10);
+circle.draw();
 
 
 
@@ -200,8 +200,8 @@ console.log(x, typeof x);
 
 //DIFFERENT TYPES OF DATA IN ARRAY
 
-let data = ['Navin', 5, { tech: 'JS' },
-    function () { console.log("Hello World"); }];
+let data = ['Navin' , 5, {tech: 'JS'}, 
+function(){ console.log("Hello World"); }];
 
 
 console.log(data);
@@ -211,10 +211,10 @@ data[3]();
 
 
 //foreach
-let nums = [42, 51, 24, 98, 65, 12];
+let nums =[42,51,24,98,65,12];
 
-nums.forEach((n, i, nums) => {
-    console.log(n, i, nums);
+nums.forEach((n,i,nums) => {
+    console.log(n,i,nums);
 });
 
 
@@ -232,12 +232,12 @@ nums.forEach((n, i, nums) => {
 //         console.log(n);
 //     });
 
-let result = nums.filter(n => n % 2 === 0)
-    .map(n => n * 2)
-    .reduce((a, b) => a + b);
+let result = nums.filter( n => n%2===0)
+    .map( n => n*2)
+    .reduce((a,b) => a+b);
 
 
-console.log(result);
+console.log(result);  
 
 
 //MAP
@@ -249,11 +249,11 @@ map.set("Kiran", "Android");
 map.set("Chirag", "ML");
 map.set("NAvin", "Blocchain");
 
-for (let [k, v] of map) {
-    console.log(k, " : ", v);
+for(let [k,v] of map){
+    console.log(k," : ",v);
 }
 
-map.forEach((k, v) => {
+map.forEach((k,v) => {
     console.log(k, " : ", v);
 });
 
@@ -271,121 +271,6 @@ nums1.add("Kiran");
 nums1.add("Chirag");
 
 console.log(nums1.has("navin"));
-nums1.forEach(element => {
-    console.log(element);
-});
-
-
-
-
-//getters and setters
-
-// const _radius = new WeakMap();
-
-// class Circle {
-//     constructor(radius) {
-//         _radius.set(this, radius);
-//     }
-
-//     get radius() {
-//         return _radius.get(this);
-//     }
-// }
-
-// const c = new Circle(1);
-
-
-//Inheritance 
-// class Shape {
-
-//     constructor(color) {
-
-//         this.color = color;
-//     }
-//     move() {
-//         console.log('move');
-//     }
-// }
-
-// class Circle extends Shape {
-
-//     constructor(color, radius) {
-//         super(color);
-//         this.radius = radius;
-//     }
-//     draw() {
-//         console.log('draw');
-//     }
-
-// }
-
-// const c = new Circle('red', 1);
-
-//method overriding
-
-// class Shape {
-//     move() {
-//         console.log('move');
-//     }
-// }
-
-// class Circle extends Shape {
-//     move() {
-//         super.move();
-//         console.log('circle move');
-//     }
-// }
-
-// const c = new Circle();
-
-///Exercise on push and pop
-const _items = new WeakMap();
-class Stack {
-    constructor() {
-        _items.set(this, []);
-    }
-
-    push(obj) {
-        _items.get(this).push(obj);
-    }
-
-    pop() {
-        const items = _items.get(this);
-
-        if (items.length === 0)
-            throw new Error('Stack is empty');
-
-        return _items.get(this).pop();
-    }
-
-    peek() {
-        const item = _items.get(this);
-
-        if (items.length === 0)
-            throw new Error('Stack is empty');
-
-        return items[items.length - 1];
-    }
-
-    get count() {
-
-        return _items.get(this).length;
-
-    }
-}
-
-
-
-//ES6 TOOLING
-const Circle = require('./circle');
-
-const c = new Circle(10);
-c.draw();
-
-
-
-
-
 
 
 
