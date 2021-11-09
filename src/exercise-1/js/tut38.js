@@ -82,13 +82,21 @@ let xyz = [
 
 ];
 
+
+//sum of counts
+
 sum = 0;
 xyz.forEach(x => {
     sum = sum + x.count;
-    console.log(sum);
-})
 
-//sum of counts
+})
+console.log(sum);
+
+
+//reduce
+var add = xyz.reduce(
+    
+    ,0)
 
 xyz.forEach(x => {
     console.log(x.count);
@@ -98,8 +106,21 @@ xyz.forEach(x => {
 
 //array of names
 
+xyz.forEach(y => {
+
+    names = [y.name];
+
+})
+
+console.log(names);
+
 
 //array of {name and count}
+// xyz.forEach(x => {
+
+//     names_count = [{ x.name, x.count }]
+// })
+
 
 //medium post example practice
 
