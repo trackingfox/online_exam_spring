@@ -2,10 +2,10 @@ console.log('hello world');
 
 
 //Factory function
-function createCircle(radius){
-    return  {
+function createCircle(radius) {
+    return {
         radius,
-        draw: function(){
+        draw: function () {
             console.log('draw')
         }
     };
@@ -15,10 +15,10 @@ const circle = createCircle(1);
 
 
 //Constructor Function
-function Circle(radius){
-    console.log('this',this);
+function Circle(radius) {
+    console.log('this', this);
     this.radius = radius;
-    this.draw = function(){
+    this.draw = function () {
         console.log('draw');
     }
 }
@@ -27,12 +27,11 @@ const another = new Circle(1);
 
 
 //Examples of factory functions
-function createStudent(firstName, lastName)
-{
+function createStudent(firstName, lastName) {
     let student = {
         firstName: firstName,
         lastName: lastName,
-        getFullName: function(){
+        getFullName: function () {
             console.log(`${this.firstName} ${this.lastName}`);
         }
     }
@@ -45,84 +44,84 @@ console.log(student1);
 
 //Example of constructor function
 
-function Student(firstName, lastName){
+function Student(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.getFullName = function(){
+    this.getFullName = function () {
         console.log(`${this.firstName} ${this.lastName}`);
     }
 }
 
-let student2 = new Student("John","Doe");
+let student2 = new Student("John", "Doe");
 console.log(student2);
 
 
 
 //Enuerating properties
-function Circle1(radius){
+function Circle1(radius) {
     this.radius = radius;
-    this.draw = function(){
+    this.draw = function () {
         console.log('draw');
     }
 }
 
 const circle1 = new Circle1(10);
 
-for(let key in circle1 ){
-    if(typeof circle1[key] !== 'function')
+for (let key in circle1) {
+    if (typeof circle1[key] !== 'function')
         console.log(key, circle1[key]);
 }
 
 const keys = Object.keys(circle1);
 console.log(keys);
 
-if('radius' in circle1)
+if ('radius' in circle1)
     console.log('Circle has a radius ');
 
 
 
 
-    //ABSTRACTION
+//ABSTRACTION
 
-    function Circle2(radius){
-        this.radius = radius;
-        this.defaultLocation = {x: 0, y:0};
-        this.computeOptimumLocation = function(factor) {
+function Circle2(radius) {
+    this.radius = radius;
+    this.defaultLocation = { x: 0, y: 0 };
+    this.computeOptimumLocation = function (factor) {
 
-        }
-
-        this.draw = function() {
-            this.computeOptimumLocation();
-            console.log('draw');
-        };
     }
 
-    const circle2 = new Circle2(10);
-    circle2.computeOptimumLocation(0.1);
-    circle2.draw();
+    this.draw = function () {
+        this.computeOptimumLocation();
+        console.log('draw');
+    };
+}
+
+const circle2 = new Circle2(10);
+circle2.computeOptimumLocation(0.1);
+circle2.draw();
 
 //Abstraction Implementation
-    function Circle3(radius){
-        this.radius = radius;
-        let defaultLocation = {x: 0, y: 0};
-        let computeOptimumLocation = function(factor) {
+function Circle3(radius) {
+    this.radius = radius;
+    let defaultLocation = { x: 0, y: 0 };
+    let computeOptimumLocation = function (factor) {
 
-        }
-
-        this.draw = function() {
-            
-            computeOptimumLocation(0.1);
-            //defaultLocation
-            //this.radius
-            console.log('draw');
-        };
     }
 
-    const circle3 = new Circle3(10);
-    circle3.draw();
+    this.draw = function () {
+
+        computeOptimumLocation(0.1);
+        //defaultLocation
+        //this.radius
+        console.log('draw');
+    };
+}
+
+const circle3 = new Circle3(10);
+circle3.draw();
 
 
-   // getters and setters
+// getters and setters
 //    function Circle4(radius){
 //     this.radius = radius;
 //     let defaultLocation = {x: 0, y: 0};
@@ -145,9 +144,9 @@ if('radius' in circle1)
 
 //             defaultLocation = value;
 //         }
-    
+
 //     });
-   
+
 // }
 
 // const circle4 = new Circle4(10);
@@ -156,50 +155,50 @@ if('radius' in circle1)
 
 
 //STOPWATCH EXERCISE
-function Stopwatch(){
-    let startTime , endTime, running, duration = 0;
-    this.start = function(){
-        if(running)
+function Stopwatch() {
+    let startTime, endTime, running, duration = 0;
+    this.start = function () {
+        if (running)
             throw new Error('Stopwatch has already started');
 
-            running = true;
+        running = true;
 
-            startTime = new Date();
-        
+        startTime = new Date();
+
     };
 
-    this.stop = function(){
-        if(!running)
+    this.stop = function () {
+        if (!running)
             throw new Error('Stopwatch is not started');
 
-         running = false;
-         
-         endTime = new Date();
+        running = false;
 
-         const seconds = (endTime.getTime() - startTime.getTime())/1000;
-         duration += seconds;
+        endTime = new Date();
+
+        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+        duration += seconds;
 
 
     };
-    this.reset = function(){
+    this.reset = function () {
         startTime = null;
         endTime = null;
         running = false;
         duration = 0;
     };
 
-    Object.defineProperty(this,'duration',{
-        get: function() { return duration; }
+    Object.defineProperty(this, 'duration', {
+        get: function () { return duration; }
     });
 }
 
 
 
 //prototype Vs Instance members
-function Circle5(radius){
+function Circle5(radius) {
     this.radius = radius;
 
-    this.move = function() {
+    this.move = function () {
         this.draw();
         console.log('move');
     }
@@ -208,7 +207,7 @@ function Circle5(radius){
     // }
 }
 
-Circle5.prototype.draw = function(){
+Circle5.prototype.draw = function () {
     this.move();
     console.log('draw');
 }
@@ -216,16 +215,16 @@ Circle5.prototype.draw = function(){
 const c1 = new Circle5(1);
 const c2 = new Circle5(1);
 
-Circle5.prototype.toString = function() {
-    return 'Circle with radius '+ this.radius;
+Circle5.prototype.toString = function () {
+    return 'Circle with radius ' + this.radius;
 }
 
 
 //Iterating instance and prototype members
-function Circle6(radius){
+function Circle6(radius) {
     this.radius = radius;
 
-    this.move = function() {
+    this.move = function () {
         console.log('move');
     }
 }
@@ -233,7 +232,7 @@ function Circle6(radius){
 const c3 = new Circle6(1);
 
 //prototype members
-Circle6.prototype.draw = function(){
+Circle6.prototype.draw = function () {
     console.log('draw');
 }
 
@@ -243,19 +242,19 @@ Circle6.prototype.draw = function(){
 console.log(Object.keys(c1));
 
 //Returns all members (instance+ prototype)
-for(let key in c1) console.log(key);
+for (let key in c1) console.log(key);
 
 
 //calling the super constructor
-function Shape(color){
+function Shape(color) {
     this.color = color;
 }
 
-Shape.prototype.duplicate = function() {
+Shape.prototype.duplicate = function () {
     console.log('duplicate');
 }
 
-function Circle7(radius , color){
+function Circle7(radius, color) {
     Shape.call(this, color);
 
     this.radius = radius;
@@ -264,7 +263,7 @@ function Circle7(radius , color){
 Circle7.prototype = Object.create(Shape.prototype);
 Circle7.prototype.constructor = Circle7;
 
-Circle7.prototype.draw = function(){
+Circle7.prototype.draw = function () {
     console.log('draw');
 }
 
@@ -272,34 +271,34 @@ Circle7.prototype.draw = function(){
 
 //PROTOTYPICAL INHERITANCE
 
-function HtmlElement(){
-    this.click = function(){
+function HtmlElement() {
+    this.click = function () {
         console.log('clicked');
     }
 }
 
-HtmlElement.prototype.focus = function(){
+HtmlElement.prototype.focus = function () {
     console.log('focussed');
 }
 
-function HtmlSelectElement1(items1 = []){
+function HtmlSelectElement1(items1 = []) {
     this.items1 = items1;
 }
 
 //POLYMORPHISM
 
-function HTMLSelectElement(items = []){
+function HTMLSelectElement(items = []) {
     this.items = items;
 
-    this.addItem = function(item){
+    this.addItem = function (item) {
         this.items.push(item);
     }
 
-    this.removeItem = function(item){
-        this.items.splice(this.items.indexOf(item),1);
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1);
     }
 
-    this.render = function(){
+    this.render = function () {
         return `
         <select>${this.items.map(item => `
             <option>${item}</option>`).join('')}
@@ -313,10 +312,10 @@ HtmlSelectElement.prototype.constructor = HtmlSelectElement;
 //const renderItem = item => `<option>${item}</option>`;
 
 
-function HtmlImageElement(src){
+function HtmlImageElement(src) {
     this.src = src;
 
-    this.render = function(){
+    this.render = function () {
         return `<img src="${this.src}" />`
     }
 }
@@ -331,12 +330,41 @@ HtmlImageElement.prototype.constructor = HtmlImageElement;
 //HOISTING
 
 //function declaration
-function sayHello(){};
+function sayHello() { };
 
 
 
 //function expression
-const sayGoodbye = function(){};
+const sayGoodbye = function () { };
+
+
+
+class Library {
+    constructor(bookList) {
+        this.bookList = bookList;
+        this.issuedBooks = {};
+    }
+
+    getBookList() {
+
+        this.bookList.forEach(element => {
+            console.log(element);
+        });
+    }
+
+    issueBook(bookname, user) {
+        console.log(this.issuedBooks[bookname]);
+        if (this.issuedBooks[booknae] == undefined) {
+            this.issuedBooks[bookname] = user;
+        }
+        // this.issuedBooks.push(bookname, user); 
+
+    }
+
+    returnBook(bookname) {
+        delete this.issuedBooks[bookname];
+    }
+}
 
 
 
