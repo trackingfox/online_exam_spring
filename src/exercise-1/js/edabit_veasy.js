@@ -42,100 +42,89 @@ console.log(maxEdge(8, 10));
 const rem = (a, b) => a % b;
 console.log(rem(-9, 45));
 
+//Create a function that takes the number of wins, draws and losses and calculates the number of points a football team has obtained so far.
 
-//palindrome check
-const isPalindrome = (str) => {
-    const cleanStr = str.trim();
-    const reverseStr = cleanStr.split('').reverse().join('');
-    return reverseStr === cleanStr ? 'palindrome' : 'not palindrome';
-}
-console.log(isPalindrome('     madam   '));
+// wins get 3 points
+// draws get 1 point
+// losses get 0 points
+// Examples
+// footballPoints(3, 4, 2) ➞ 13
 
-//fibonacci sequence
-var i;
-var fib = []; // Initialize array!
+// footballPoints(5, 0, 2) ➞ 15
 
-fib[0] = 0;
-fib[1] = 1;
-for (i = 2; i <= 10; i++) {
-    // Next fibonacci number = previous + one before previous
-    fib[i] = fib[i - 2] + fib[i - 1];
-    console.log(fib[i]);
-}
+// footballPoints(0, 0, 1) ➞ 0
 
-//create a new string from a given string taking the first 3 chars and last 3 chars and ading them together 
-
-const makeNewString = (str) =>
-    str.length < 3 ? str : str.slice(0, 3) + str.slice(-3);
-
-console.log('dhhklshfshfl');
-
-//extract first half of a string
-const firstHalf = (str) => str.slice(0, str.length / 2);
-
-console.log(firstHalf('temp'));
-
-//concatenate two strings except their first character
-
-const concatenate = (str1, str2) =>
-    str1.slice(1) + str2.slice(1);
-console.log(concatenate('abc', 'def'));
-
-//find out which one is neaest to 100
-const closestTo100 = (a, b) => (100 - a) < (100 - b) ? a : b;
-console.log(closestTo100(99, 1));
+const footballPoints = (wins, draws, losses) => wins * 3 + draws * 1 + losses * 0;
+console.log(footballPoints(3, 4, 2));
 
 
+//6 = 00000110
+// 23 = 00010111
+// From the bitwise representation of numbers, we can calculate the bitwise AND, bitwise OR and bitwise XOR. Using the example above:
 
-///program to check a given string contains 2 to 4 occurences of a specified character
+// bitwiseAND(6, 23) ➞ 00000110
 
-const countChars = (str, char) =>
-    str.split('').filter(ch => ch === char).length;
-const contains2To4 = (str, char) =>
-    countChars(str, char) >= 2 && countChars(str, char) <= 4;
+// bitwiseOR(6, 23) ➞ 00010111
 
-console.log(contains2To4('ooh', 'o'));
-console.log(contains2To4('oh!', 'o'));
+// bitwiseXOR(6, 23) ➞ 00010001
+// Write three functions to calculate the bitwise AND, bitwise OR and bitwise XOR of two numbers.
+
+// Examples
+// bitwiseAND(7, 12) ➞ 4
+
+// bitwiseOR(7, 12) ➞ 15
+
+// bitwiseXOR(7, 12) ➞ 11
+
+const bitwiseAND = (a, b) => a & b;
+console.log(bitwiseAND(7, 12));
+
+const bitwiseOR = (a, b) => a | b;
+console.log(bitwiseOR(7, 12));
+
+const bitwiseXOR = (a, b) => a ^ b;
+console.log(bitwiseXOR(7, 12));
 
 
-//program to get the largest even number from an array of integers
+//Create a function that takes a number (step) as an argument and returns the number of matchsticks in that step. See step 1, 2 and 3 in the image above.
 
-const largestEven = (arr) =>
-    Math.max(...arr.filter(num => num % 2 === 0));
-console.log(largestEven([1, 2, 3, 4, 5, 6]));
-console.log(largestEven([1, 2, 33, 4, 5, 6]));
+// Examples
+// matchHouses(1) ➞ 6
+
+// matchHouses(4) ➞ 21
+
+// matchHouses(87) ➞ 436
+
+const matchHouses = step =>
+    step === 0 ? 0 : step === 1 ? 6 : step === 2 ? 11 : 11 + (step - 2) * 5
+console.log(matchHouses(4));
 
 
 
-///program to compare objects to determine if the first one contains the same properties as the second one
+// 10 << 3 = 10 * 2^3 = 10 * 8 = 80
+// -32 << 2 = -32 * 2^2 = -32 * 4 = -128
+// 5 << 2 = 5 * 2^2 = 5 * 4 = 20
+// Write a function that mimics (without the use of <<) the left shift operator and returns the result from the two given integers.
 
-const objA = { a: 1, b: 2, c: 1 };
-const objB = { a: 1, b: 1, c: 4 };
-const objC = { a: 1, b: 4, c: 1 };
+// Examples
+// shiftToLeft(5, 2) ➞ 20
 
-const objectsEqual = (a, b) =>
-    Object.keys(a).every(key => b[key]);
+// shiftToLeft(10, 3) ➞ 80
 
-console.log(objectsEqual(objA, objB));
-console.log(objectsEqual(objA, objC));
+// shiftToLeft(-32, 2) ➞ -128
 
-//program to convert a comma separated csv string  to a 2D array. A new line indicates a new row in the array
+// shiftToLeft(-6, 5) ➞ -192
 
-const parseCSV = (csvString) =>
-    csvString.split('\n').map(row => row.split(','));
+// shiftToLeft(12, 4) ➞ 192
 
-const str = `abc,def,ghi
- jkl,mno,pqr
- stu,vwx,yza`;
-
-console.log(parseCSV(str));
-
-//program to generate a random hexadecimal color code
-const getRandomHexNumber = () =>
-    Math.floor(Math.random() * 16).toString(16);
-
-const getRandomHexColor = () => '#' + Array.from({ length: 6 }).map(getRandomHexNumber).join('');
-
-console.log(getRandomHexColor());
-console.log(getRandomHexColor());
-console.log(getRandomHexColor());
+// shiftToLeft(46, 6) ➞ 2944
+const shiftToLeft = (a, b) => {
+    let x;
+    x = a * Math.pow(2, b);
+    return x;
+};
+console.log(shiftToLeft(5, 2));
+console.log(shiftToLeft(10, 3));
+console.log(shiftToLeft(-32, 2));
+console.log(shiftToLeft(-6, 5));
+console.log(shiftToLeft(12, 4));
