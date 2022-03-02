@@ -128,3 +128,78 @@ console.log(shiftToLeft(10, 3));
 console.log(shiftToLeft(-32, 2));
 console.log(shiftToLeft(-6, 5));
 console.log(shiftToLeft(12, 4));
+
+
+//Create a function to return the amount of potatoes there are in a string.
+
+// Examples
+// potatoes("potato") ➞ 1
+
+// potatoes("potatopotato") ➞ 2
+
+// potatoes("potatoapple") ➞ 1
+
+
+const potatoes = (txt) => {
+    str = "potato"
+    M = str.length;
+    N = txt.length;
+    res = 0;
+
+    /* A loop to slide str[] one by one */
+    for (var i = 0; i <= N - M; i++) {
+        /* For current index i, check for
+    pattern match */
+        var j;
+        for (j = 0; j < M; j++) {
+            if (txt.charAt(i + j) != str.charAt(j)) {
+                break;
+            }
+        }
+
+        // if str[0...M-1] = txt[i, i+1, ...i+M-1]
+        if (j == M) {
+            res++;
+            j = 0;
+        }
+    }
+    return res;
+}
+
+console.log(potatoes('potatoapplepotatoapplepotato'));
+
+
+//Create a function that returns a base-2 (binary) representation of a base-10 (decimal) string number. To convert is simple: ((2) means base-2 and (10) means base-10) 010101001(2) = 1 + 8 + 32 + 128.
+
+// Going from right to left, the value of the most right bit is 1, now from that every bit to the left will be x2 the value, value of an 8 bit binary numbers are (256, 128, 64, 32, 16, 8, 4, 2, 1).
+
+// Examples
+// binary(1) ➞ "1"
+// // 1*1 = 1
+
+// binary(5) ➞ "101"
+// // 1*1 + 1*4 = 5
+
+// binary(10) ➞ "1010"
+// // 1*2 + 1*8 = 10
+
+const binary = (num1) => num1.toString(2);
+console.log(binary(5));
+
+
+//Create a function that returns true if the first array can be nested inside the second.
+
+// arr1 can be nested inside arr2 if:
+
+// arr1's min is greater than arr2's min.
+// arr1's max is less than arr2's max.
+// Examples
+// canNest([1, 2, 3, 4], [0, 6]) ➞ true
+
+// canNest([3, 1], [4, 0]) ➞ true
+
+// canNest([9, 9, 8], [8, 9]) ➞ false
+
+// canNest([1, 2, 3, 4], [2, 3]) ➞ false
+
+
