@@ -183,8 +183,10 @@ console.log(potatoes('potatoapplepotatoapplepotato'));
 // binary(10) ➞ "1010"
 // // 1*2 + 1*8 = 10
 
-const binary = (num1) => num1.toString(2);
-console.log(binary(5));
+// The JavaScript built-in method `toString([radix])` returns a string value in a specified radix (base). Here, toString(2) converts the decimal number to binary number.
+
+const binary = (num1) => num1.toString(16);
+console.log(binary(456));
 
 
 //Create a function that returns true if the first array can be nested inside the second.
@@ -205,7 +207,10 @@ console.log(binary(5));
 
 const canNest = (arr1, arr2) => {
 
-    newarr1 = findMinMax(arr1)
+
+
+
+    newarr1 = arr1.min()
     newarr2 = findMinMax(arr2)
 
     if (newarr1[0] < newarr2[0] && newarr1[1] > newarr2[1])
@@ -213,22 +218,6 @@ const canNest = (arr1, arr2) => {
     else
         console.log("false");
 
-
-    const findMinMax = (x) => {
-        max = x[0]
-        min = x[0]
-        n = x.length
-
-        for (i = 1; i < n; i++) {
-            if (x[i] > max)
-                max = x[i]
-            else if (x[i] < min)
-                min = x[i]
-        }
-
-        res = { max, min }
-        return res
-    }
 }
 
 canNest([1, 2, 3, 4], [0, 6])
@@ -242,7 +231,7 @@ canNest([1, 2, 3, 4], [2, 3])
 const q = x => x / 10
 console.log(q(10));
 
-
+console.log(Math.min(...[1, 2, 3, 4]));
 
 // Write a function that takes a two-digit number and determines if it's the largest of two possible digit swaps.
 
@@ -260,3 +249,120 @@ console.log(q(10));
 
 // largestSwap(99) ➞ true
 
+
+
+
+
+
+// We'll say that a "pair" in a string is two instances of a char separated by a char. So "AxA" the A's make a pair. Pair's can overlap, so "AxAxA" contains 3 pairs -- 2 for A and 1 for x. Recursively compute the number of pairs in the given string.
+
+
+// countPairs("axa") → 1
+// countPairs("axax") → 2
+// countPairs("axbx") → 1
+
+
+
+
+
+// Count recursively the total number of "abc" and "aba" substrings that appear in the given string.
+
+
+// countAbc("abc") → 1
+// countAbc("abcxxabc") → 2
+// countAbc("abaxxaba") → 2
+
+
+
+// str = "frequency of unique chars in string"
+
+// f compared to all chars and counted for occurrences = 1 
+// col1 : col2 
+// f        1 
+// r        3
+// e        3
+// d        1 
+//...
+// this is nothing BUT a (key value pair) 
+
+// [2,3,4,5,6,7] --> belong to one type ; meaning is different  
+
+const freq = x => {
+    dict = {}
+    y = x.split('')
+    console.log(y);
+    y.forEach(ch => {
+        // if ch exist in my dict then increments 
+        // if ch doest not exist then create a new key value pair  key : 1
+        dict[ch] = 1 + dict[ch]
+        console.log(dict);
+        // dict ['f'] = 6 ///   f:6 
+        // dict ['e'] = 1 ///   e:1 
+    });
+}
+console.log(freq("HEllo This is Sharif"));
+
+
+const fr = str => {
+    console.log(str);
+    d = {};
+    for (let c of str)
+        d[c] = (d[c] + 1) || 1;
+    // if (c in d) d[c]++; else d[c] = 1
+}
+console.log(fr("HEllo This is Sharif"));
+
+
+// dict[key] = value //  -->  { key:value }
+
+
+// Arrays
+// Dics
+// String handling
+// interations (different types in javascript)
+    // for each ; for in  ; for of ; while ; 
+    // iterate array 
+    // iterate over dict or {key:value} pairs
+// if then else (short hand)
+// 
+
+
+
+/* 
+7. Vowels
+Given a string of words or phrases, count the number of vowels.
+3 diff solutions:
+
+*/
+
+
+
+/* 
+9. Reverse Array
+Given an array of items, reverse the order.
+ */
+
+
+
+
+/* 
+20. Staircase
+For a given number of steps, print out a “staircase” using hashes and spaces.
+Example: n = 4
+#         
+##        
+###       
+####
+
+ */
+
+
+/* 
+21. Pyramid
+For a given number of levels, print out a “pyramid” using hashes and spaces.
+n=4 
+   #   
+  ###  
+ ##### 
+#######
+*/

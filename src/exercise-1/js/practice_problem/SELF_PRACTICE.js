@@ -131,8 +131,12 @@ const getDays = (date1, date2) => {
 //ex: string: 'webmaster'
 //output: 'abeemrstw'
 
-const alphabeticalOrder = (str) => str.split('').sort((a, b) => a > b ? 1 : -1).join('');
+const alphabeticalOrder = (str) => str.split('').sort().join('');
 console.log(alphabeticalOrder('webmaster'));
+
+// learn sort() before applying ( DO NOT COPY PASTE )
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
 
 
 //function that accepts a string as a parameter and counts the number of vowels within the string
