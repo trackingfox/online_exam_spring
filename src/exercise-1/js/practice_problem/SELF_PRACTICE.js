@@ -262,3 +262,229 @@ const getRandomHexColor = () => '#' + Array.from({ length: 6 }).map(getRandomHex
 console.log(getRandomHexColor());
 console.log(getRandomHexColor());
 console.log(getRandomHexColor());
+
+
+
+
+//Find Number of Digits in Number
+// Create a function that will return an integer number corresponding to the amount of digits in the given integer num.
+
+// Examples
+// num_of_digits(1000) ➞ 4
+
+// num_of_digits(12) ➞ 2
+
+// num_of_digits(1305981031) ➞ 10
+
+// num_of_digits(0) ➞ 1
+
+
+const num_of_digits = x => {
+    return x.toString().length;
+}
+console.log(num_of_digits(1000));
+
+
+//Create a function that concatenates n input arrays, where n is variable.
+
+// Examples
+// concat([1, 2, 3], [4, 5], [6, 7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+
+// concat([1], [2], [3], [4], [5], [6], [7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+
+// concat([1, 2], [3, 4]) ➞ [1, 2, 3, 4]
+
+// concat([4, 4, 4, 4, 4]) ➞ [4, 4, 4, 4, 4]
+
+
+const concat = (...narrs) => {
+    let a = [];
+    for (let i = 0; i < narss.length; i++) {
+        for (let j = 0; j < narrs[i].length; j++) {
+            a.push(narss[i][j]);
+        }
+
+    } return a;
+}
+console.log(concat([1, 2, 3], [4, 5], [6, 7]));
+
+// Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length.
+
+// Examples
+// arrayOfMultiples(7, 5) ➞ [7, 14, 21, 28, 35]
+
+// arrayOfMultiples(12, 10) ➞ [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+
+// arrayOfMultiples(17, 6) ➞ [17, 34, 51, 68, 85, 102]
+
+
+const arrayOfMultiples = (x, y) => {
+    arr = []
+    for (i = 1; i <= y; i++) {
+        s = x * i
+        arr.push(s)
+    }
+    console.log(arr);
+}
+console.log(arrayOfMultiples(17, 6));
+
+
+///Write a JavaScript function to concatenates a given string n times (default is 1).
+// Test Data:
+// console.log(repeat('Ha!'));
+// console.log(repeat('Ha!',2));
+// console.log(repeat('Ha!',3));
+// "Ha!"
+// "Ha!Ha!"
+// "Ha!Ha!Ha!"
+
+
+const repeat = (str, count) => {
+    if (typeof (count) == "undefined") {
+        count = 1
+    }
+    return count < 1 ? '' : new Array(count + 1).join(str);
+}
+
+console.log(repeat('Ha!'));
+console.log(repeat('Ha!', 2));
+console.log(repeat('Ha!', 3));
+
+
+// Create a function that takes numbers b and m as arguments and returns the derivative of the function f(x)=x^b with respect to x evaluated at x=m, where b and m are constants.
+
+// Examples
+// derivative(1, 4) ➞ 1
+
+// derivative(3, -2) ➞ 12
+
+// derivative(4, -3) ➞ -108
+
+const derivative = (x, y) => {
+
+}
+
+
+
+//javascript program to find lcm of n lements in an array
+const gcd = (x, y) => {
+
+    if (b == 0)
+        return a;
+    return gcd(b, a % b)
+}
+
+const lcm = (x, y) => {
+
+    let ans = arr[0]
+    return lcm(ans, a % b)
+}
+
+//chunked array problem
+const chunks = (arr, n) => {
+    const chunked = [];
+    for (let elem of arr) {
+        let last = chunked[chunked.length - 1];
+
+        if (!last || last.length === n)
+            chunked.push([elem])
+        else
+            last.push(elem)
+    }
+    return chunked;
+}
+
+
+
+
+//How to convert an Object {} to an Array [] of key-value pairs in JavaScript
+
+var obj = {
+    "1": "ABvhdjh",
+    "2": 7,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+}
+var result = Object.keys(obj).map((key) => [Number(key), obj[key]]);
+
+console.log(result);
+
+
+///Anagram Substring Search (Or Search for all permutations)
+
+//find out whether a given array contains majority element or not
+const findmajority = (arr, n) => {
+    let maxCount = 0;
+    let index = -1; // sentinels
+
+    for (let i = 0; i < n; i++) {
+        let count = 0;
+        for (let j = 0; j < n; j++) {
+            if (arr[i] == arr[j])
+                count++;
+        }
+
+        // Update maxCount if count of
+        // current element is greater
+        if (count > maxCount) {
+            maxCount = count;
+            index = i;
+        }
+    }
+
+    // If maxCount is greater than n/2
+    // return the corresponding element
+    if (maxCount > n / 2)
+        document.write(arr[index]);
+    else
+        document.write("No Majority Element");
+}
+
+console.log()
+
+//[[3], 4, [2], [5], 1, 6]
+//ans: [1, [2], [3], 4, [5], 6]
+
+const sortIt = (arr) => {
+    return arr.sort((a, b) => {
+        let num1 = typeof a === "number" ? a : a[0];
+        let num2 = typeof b === "number" ? b : b[0];
+        return num1 - num2;
+    });
+}
+
+
+console.log(sortIt([[3], 4, [2], [5], 1, 6]));
+
+
+//sumPrimes([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) ➞ 17
+// sumPrimes([2, 3, 4, 11, 20, 50, 71]) ➞ 87
+// sumPrimes([]) ➞ 0
+
+function sumPrimes(arr) {
+    let sol = 0;
+    for (let num of arr) {
+        if (isPrime(num)) {
+            sol += num;
+        }
+    }
+    return sol;
+}
+
+const isPrime = (num) => {
+    if (num == 2 || num == 3) {
+        return true;
+    }
+    if (num == 1) {
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+};

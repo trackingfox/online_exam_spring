@@ -318,11 +318,132 @@ console.log(fr("HEllo This is Sharif"));
 
 // Arrays
 // Dics
+
+let dict = {
+    id: 123,
+    name: "Anuj",
+    age: 28,
+    registered: true
+}
+
+//alternate of creating object
+//Create a new Object
+let dict = new Object()
+
+//Populate data
+dict["id"] = 123
+dict["name"] = "Anj"
+dict["age"] = 28
+dict["registered"] = true
+
+let dict = {
+    "color": "red",
+    1: [12, 14, 90],
+    1.2: 123,
+}
+
+
+//access data using keys
+dict["color"] //red
+dict[1] //[12, 14, 90]
+dict[1.2] //123
+
+//Use key as a property 
+dict.color //red
+
+
+//iterate through key value pairs
+let dict = new Object()
+
+//Populate data
+dict["id"] = 123
+dict["name"] = "Anj"
+dict["age"] = 28
+dict["registered"] = true
+
+for (const key of Object.keys(dict)) {
+    console.log(key + "+" + dict[key]);
+}
+
+for (const value of Object.values(dict)) {
+    console.log(value);
+}
+
+
+//We can also iterate over pairs of keys and values in the same loop using the Object.entries method.
+for (const [key, value] of Object.entries(dict)) {
+    console.log(key + ":" + value);
+}
+
+
+for (const [key, value] of dict.entries()) {
+    console.log(key + ": " + value)
+}
+
+for (const key of dict.keys()) {
+    console.log(key)
+}
+
+for (const value of dict.values()) {
+    console.log(value)
+}
+
 // String handling
+//assessing string characters
+const a = 'hello'
+console.log(a[1]);//e
+console.log(a.charAt(1));//e
+
+const a = 225; // number
+const b = true; // boolean
+
+//converting to string
+const result1 = String(a);
+const result2 = String(b);
+
+console.log(result1); // "225"
+console.log(result2); // "true"
+
+//escape character
+const nam = 'My name is \'Peter\'.';
+console.log(nam);
+//My name is 'Peter'.
+
+
 // interations (different types in javascript)
-    // for each ; for in  ; for of ; while ; 
-    // iterate array 
-    // iterate over dict or {key:value} pairs
+// for each ; for in  ; for of ; while ; 
+const car = {
+    brakes: '2',
+    tires: '4'
+}
+for (let i in car) {
+    console.log(car[i]); // "2", "4"
+}
+
+const rgb = ['red', 'green', 'blue']
+
+for (let key in rgb) {
+    console.log(key); // logs "0", "1", "2"
+}
+
+for (let value of rgb) {
+    console.log(value); // logs "red", "green", "blue"
+}
+
+
+// iterate array 
+//Array.map() vs Array.forEach() 
+const numbers = [1, 2, 3, 4];
+const mapNumbers = numbers.map(function (number) {
+    return number * 2;
+});
+
+console.log(mapNumbers);
+// [2, 4, 6, 8]
+
+
+
+// iterate over dict or {key:value} pairs
 // if then else (short hand)
 // 
 
@@ -341,8 +462,25 @@ Given a string of words or phrases, count the number of vowels.
 9. Reverse Array
 Given an array of items, reverse the order.
  */
+reverseArray1 = arr => {
+    newArr = []
+    arr.forEach(element => {
+        newArr.unshift(element)
+    })
+    return newArr
+}
+console.log(reverseArra1y(['2345', 12, 5, "abc"]));
 
 
+
+reverseArray2 = arr => {
+    newArr = []
+    for (let i = arr.length - 1; i >= 0; i--) {
+        newArr.push(arr[i])
+    }
+    return newArr
+}
+console.log(reverseArray2(['2345', 12, 5, "abc"]));
 
 
 /* 
@@ -354,7 +492,12 @@ Example: n = 4
 ###       
 ####
 
+
  */
+
+staircase = x => {
+
+}
 
 
 /* 
