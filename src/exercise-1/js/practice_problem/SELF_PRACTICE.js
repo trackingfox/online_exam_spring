@@ -488,3 +488,33 @@ const isPrime = (num) => {
     }
     return true;
 };
+
+// chunkify([2, 3, 4, 5], 2) ➞ [[2, 3], [4, 5]]
+// chunkify([2, 3, 4, 5, 6], 2) ➞ [[2, 3], [4, 5], [6]]
+
+function chunkify(arr, size) {
+    let sol = [];
+    while (arr.length) {
+        sol.push(arr.splice(0, size));
+    }
+    return sol;
+}
+
+console.log(chunkify([2, 3, 4, 5], 2))
+
+
+//You are given a number n. Determine whether n has exactly 3 divisors or not.
+function isExactlyThree(n) {
+    let divs = [1, n];
+    if (n <= 3) {
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            divs.push(i);
+            divs.push(n / i);
+        }
+    }
+    return new Set(divs).size === 3 ? true : false;
+}
+
