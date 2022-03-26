@@ -518,3 +518,105 @@ function isExactlyThree(n) {
     return new Set(divs).size === 3 ? true : false;
 }
 
+
+
+//Given an integer n, return a string with n characters such that each character in such string occurs an odd number of times.
+//The returned string must contain only lowercase English letters. If there are multiples valid strings, return any of them.  
+
+var generateTheString = function (n) {
+    if (n % 2 === 0) {
+        return "a".repeat(n - 1) + "b";
+    } else {
+        return "a".repeat(n);
+    }
+};
+
+
+//Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+
+// Example 1:
+// Input: "Let's take LeetCode contest"
+// Output: "s'teL ekat edoCteeL tsetnoc"
+
+var reverseWords = function (s) {
+    let sol = s.split(" ").map((word) => {
+        let rev = word.split("");
+        for (let i = 0, j = word.length - 1; i < j; i++, j--) {
+            let temp = rev[i];
+            rev[i] = rev[j];
+            rev[j] = temp;
+        }
+        return rev.join("");
+    });
+    return sol.join(" ");
+};
+
+
+//Given an array of positive integers arr, calculate the sum of all possible odd-length subarrays.
+// A subarray is a contiguous subsequence of the array.
+// Return the sum of all odd-length subarrays of arr.
+// Example 1:
+// Input: arr = [1,4,2,5,3]
+// Output: 58
+// Explanation: The odd-length subarrays of arr and their sums are:
+// [1] = 1
+// [4] = 4
+// [2] = 2
+// [5] = 5
+// [3] = 3
+// [1,4,2] = 7
+// [4,2,5] = 11
+// [2,5,3] = 10
+// [1,4,2,5,3] = 15
+// If we add all these together we get 1 + 4 + 2 + 5 + 3 + 7 + 11 + 10 + 15 = 58
+
+var sumOddLengthSubarrays = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i += 2) {
+        for (let j = 0; j < arr.length - i; j++) {
+            sum += arr.slice(j, j + i + 1).reduce((acc, curr) => acc + curr);
+            console.log(arr.slice(j, j + i + 1));
+        }
+    }
+    return sum;
+};
+
+
+//You are given an integer n, the number of teams in a tournament that has strange rules:
+
+// If the current number of teams is even, each team gets paired with another team. A total of n / 2 matches are played, and n / 2 teams advance to the next round.
+// If the current number of teams is odd, one team randomly advances in the tournament, and the rest gets paired. A total of (n - 1) / 2 matches are played, and (n - 1) / 2 + 1 teams advance to the next round.
+// Return the number of matches played in the tournament until a winner is decided.
+
+// Example 1:
+
+// Input: n = 7
+// Output: 6
+// Explanation: Details of the tournament: 
+// - 1st Round: Teams = 7, Matches = 3, and 4 teams advance.
+// - 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.
+// - 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+// Total number of matches = 3 + 2 + 1 = 6.
+
+var numberOfMatches = function (n) {
+    let matches = 0;
+    let reminder = 0;
+    while (n) {
+        n += reminder;
+        reminder = n % 2;
+
+        if (reminder) {
+            n = (n - 1) / 2;
+        } else {
+            n /= 2;
+        }
+        matches += n;
+    }
+    return matches;
+};
+
+
+console.log(numberOfMatches(14))
+
+
+
