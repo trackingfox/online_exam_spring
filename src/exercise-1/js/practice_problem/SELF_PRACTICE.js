@@ -619,6 +619,105 @@ var numberOfMatches = function (n) {
 console.log(numberOfMatches(14))
 
 
+//the array twins
+// Create a function that given an array, it returns the index where if splited in two-subarrays (last element of the first array has index of (foundIndex-1)), the sum of them are equal.
+
+
+// twins([10, 20, 30, 5, 40, 50, 40, 15]) ➞ 5
+// // foundIndex 5 : [10+20+30+5+40]=[50+40+15]
+
+// twins([1, 2, 3, 4, 5, 5]) ➞ 4
+// // [1, 2, 3, 4] [5, 5]
+
+// twins([3, 3]) ➞ 1
+// Return only the foundIndex, not the divided arrays!
 
 
 
+function twins(arr) {
+    for (var i = 1; i < arr.length; i++) {
+        if (
+            arr.slice(0, i).reduce((a, b) => a + b) ===
+            arr.slice(i).reduce((a, b) => a + b)
+        )
+            return i;
+    }
+}
+Advertisements
+
+
+//Average Word Length
+// Create a function that takes in a sentence and returns the average length of each word in that sentence. Round your result to two decimal places.
+//averageWordLength("A B C.") ➞ 1.00
+
+// averageWordLength("What a gorgeous day.") ➞ 4.00
+// averageWordLength("Dude, this is so awesome!") ➞ 3.80
+
+function averageWordLength(str) {
+    var strArr = str.replace(/[^\w\s]|_/g, "").split(" ");
+    var len = strArr.length;
+    var sol = strArr.map((word) => word.length).reduce((a, b) => a + b) / len;
+    return sol.toFixed(2) == sol + "" ? sol : parseFloat(sol.toFixed(2));
+}
+
+// Write a function that returns the number of times you must carry a digit when you sum together two integers.
+
+// carryDigits(36, 135) ➞ 1
+// // You carry the 1 when you sum 6 and 5 together.
+
+// carryDigits(671, 329) ➞ 3
+
+// carryDigits(1111, 3333) ➞ 0
+
+// carryDigits(53214, 56905) ➞ 3
+// Notes
+// Count all carry operations (even those on leading digits).
+
+function carryDigits(n1, n2) {
+    var sol = 0,
+        carryOver = 0,
+        sum = 0;
+    while (n1 !== 0 && n2 !== 0) {
+        sum = (n1 % 10) + (n2 % 10) + carryOver;
+        console.log("n1: " + n1 + " n2:" + n2 + "sum:" + sum);
+
+        if (sum >= 10) {
+            carryOver = 1;
+            sol++;
+        } else carryOver = 0;
+        n1 = Math.floor(n1 / 10);
+        n2 = Math.floor(n2 / 10);
+    }
+    return sol;
+}
+
+
+
+// Create a function that takes an array of arrays and return the length of the missing array.
+
+// Examples
+
+// findMissing([[1], [1, 2], [4, 5, 1, 1], [5, 6, 7, 8, 9]]) ➞ 3
+
+// findMissing([[5, 6, 7, 8, 9], [1, 2], [4, 5, 1, 1], [1]]) ➞ 3
+
+// findMissing([[4, 4, 4, 4], [1], [3, 3, 3]]) ➞ 2
+// Notes
+// Test input arrays won’t always be sorted in order of length.
+// If the array of arrays is null or empty, your function should return false.
+// If an array within the parent array is null or empty, return false.
+// There will always be a missing element and its length will be between the given arrays.
+
+
+function findMissing(arr) {
+    if (arr === null) return false;
+    if (arr.length === 0) return false;
+    var lenArr = arr.map(a => a.length).sort()
+    console.log(lenArr);
+    for (var i = 0; i <= lenArr.length; i++) {
+        if (lenArr[i] == 0) return false;
+        if (i + lenArr[0] !== lenArr[i]) {
+            return i + lenArr[0];
+        }
+    }
+}
